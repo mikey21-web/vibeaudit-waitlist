@@ -47,6 +47,14 @@ h1, h2, h3, h4 {
   100% { background-position: 1000px 0; }
 }
 
+@keyframes fadeCycle {
+  0%   { opacity: 0; transform: translateY(12px); }
+  15%  { opacity: 1; transform: translateY(0); }
+  85%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-12px); }
+}
+.fade-cycle { animation: fadeCycle 4.2s ease both; }
+
 .animate-in { animation: slideInUp 0.7s ease-out both; }
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
