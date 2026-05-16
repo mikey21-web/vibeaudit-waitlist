@@ -32,10 +32,147 @@ body {
   -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
 }
 
-/* soft glow blob — single, restrained */
+/* drifting soft glow */
 .accent-glow {
-  background: radial-gradient(circle at center, rgba(94,106,210,0.22), transparent 60%);
+  background: radial-gradient(circle at center, rgba(94,106,210,0.28), transparent 60%);
   filter: blur(40px);
+  animation: drift 14s ease-in-out infinite alternate;
+}
+.accent-glow-2 {
+  background: radial-gradient(circle at center, rgba(94,106,210,0.18), transparent 60%);
+  filter: blur(60px);
+  animation: drift2 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  0%   { transform: translate(-50%, 0) scale(1); opacity: 0.7; }
+  100% { transform: translate(-46%, 24px) scale(1.08); opacity: 1; }
+}
+@keyframes drift2 {
+  0%   { transform: translate(-50%, 0) scale(1); }
+  100% { transform: translate(-54%, -30px) scale(1.12); }
+}
+
+/* reveal on view */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1.show { transition-delay: 80ms; }
+.reveal-d2.show { transition-delay: 160ms; }
+.reveal-d3.show { transition-delay: 240ms; }
+.reveal-d4.show { transition-delay: 320ms; }
+.reveal-d5.show { transition-delay: 400ms; }
+.reveal-d6.show { transition-delay: 480ms; }
+.reveal-d7.show { transition-delay: 560ms; }
+
+/* rotating word slide */
+.word-slot {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.word-slot > span {
+  display: inline-block;
+  animation: wordSlide 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes wordSlide {
+  0%   { transform: translateY(120%); opacity: 0; }
+  60%  { opacity: 1; }
+  100% { transform: translateY(0);    opacity: 1; }
+}
+.word-slot > span.out {
+  animation: wordSlideOut 0.4s cubic-bezier(0.5, 0, 0.8, 0) both;
+}
+@keyframes wordSlideOut {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(-120%); opacity: 0; }
+}
+
+/* glow button */
+.btn-glow {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent, rgba(94,106,210,0.55), transparent);
+  background-size: 200% 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  animation: shimmer 2.4s linear infinite;
+}
+.btn-glow:hover::before { opacity: 1; }
+.btn-glow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px -8px rgba(94,106,210,0.6);
+}
+.btn-glow:active { transform: translateY(0); }
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* form focus ring pulse */
+.ring-pulse:focus-within {
+  animation: ringPulse 1.6s ease-out;
+}
+@keyframes ringPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(94,106,210,0.45); }
+  100% { box-shadow: 0 0 0 14px rgba(94,106,210,0); }
+}
+
+/* terminal line stagger */
+.term-line {
+  opacity: 0;
+  animation: termLine 0.45s ease-out both;
+}
+@keyframes termLine {
+  0%   { opacity: 0; transform: translateX(-6px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* caret blink */
+@keyframes blink {
+  0%, 49%  { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.animate-blink { animation: blink 1s step-end infinite; }
+
+/* avatar pop-in */
+@keyframes avatarPop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.avatar-pop { animation: avatarPop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* marquee logos */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
 /* scrollbar */
@@ -51,4 +188,13 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px #0D0E10 inset !important;
   -webkit-text-fill-color: #F7F8F8 !important;
   caret-color: #F7F8F8;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
