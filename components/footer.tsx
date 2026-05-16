@@ -2,40 +2,32 @@
 
 export function Footer() {
   return (
-    <footer style={{
-      background: "#0f172a",
-      color: "#94a3b8",
-      borderTop: "2px solid #1e293b",
-      padding: "3rem 2rem"
-    }}>
-      <div style={{
-        maxWidth: 1280, margin: "0 auto",
-        display: "flex", flexWrap: "wrap",
-        justifyContent: "space-between", alignItems: "center", gap: 20
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{
-            width: 24, height: 24,
-            background: "linear-gradient(135deg,#1e3a8a,#6366f1)",
-            borderRadius: 5, display: "flex", alignItems: "center", justifyContent: "center"
-          }}>
-            <span style={{ color: "#fff", fontSize: 12 }}>✦</span>
-          </div>
-          <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "#fff", fontSize: 16 }}>
-            VibeAudit
+    <footer className="border-t border-line/60">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 sm:flex-row sm:items-center">
+        <div className="flex items-center gap-2">
+          <span className="grid h-5 w-5 place-items-center rounded-[5px] bg-ink-primary text-[11px] font-semibold text-bg">
+            V
+          </span>
+          <span className="text-[13px] font-medium text-ink-primary">VibeAudit</span>
+          <span className="ml-2 text-[12px] text-ink-tertiary">
+            © {new Date().getFullYear()}
           </span>
         </div>
 
-        <p style={{ fontSize: 13, color: "#475569", textAlign: "center" }}>
-          © {new Date().getFullYear()} VibeAudit. Built for the vibe-coding era.
-        </p>
-
-        <div style={{ display: "flex", gap: 24 }}>
-          {[["Privacy","#"],["Terms","#"],["Contact","#"]].map(([label, href]) => (
-            <a key={label} href={href} style={{ color: "#475569", textDecoration: "none", fontSize: 13, transition: "color 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.color="#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color="#475569")}
-            >{label}</a>
+        <div className="flex items-center gap-6">
+          {[
+            ["Privacy", "#"],
+            ["Terms", "#"],
+            ["Contact", "mailto:hello@vibeaudit.dev"],
+            ["X", "#"],
+          ].map(([label, href]) => (
+            <a
+              key={label}
+              href={href}
+              className="text-[12px] text-ink-secondary transition-colors hover:text-ink-primary"
+            >
+              {label}
+            </a>
           ))}
         </div>
       </div>

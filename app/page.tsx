@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/navbar"
-import { HeroAnimated } from "@/components/hero-animated"
 import { Hero } from "@/components/hero"
 import { Problems } from "@/components/problems"
 import { HowItWorks } from "@/components/how-it-works"
@@ -8,9 +7,8 @@ import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <main style={{ minHeight: "100vh", background: "#f8fafc" }}>
+    <main className="min-h-screen bg-bg text-ink-primary">
       <Navbar />
-      <HeroAnimated />
       <Hero />
       <Problems />
       <HowItWorks />

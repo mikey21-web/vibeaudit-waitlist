@@ -7,112 +7,101 @@ export function Hero() {
   const [joined, setJoined] = useState(false)
 
   return (
-    <section id="waitlist" style={{
-      maxWidth: 1280, margin: "0 auto",
-      padding: "5rem 2rem",
-      position: "relative", overflow: "hidden"
-    }}>
-      {/* BG blobs */}
-      <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, background: "radial-gradient(circle,rgba(249,115,22,0.08),transparent)", borderRadius: "50%", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: -80, left: -80, width: 400, height: 400, background: "radial-gradient(circle,rgba(30,58,138,0.05),transparent)", borderRadius: "50%", pointerEvents: "none" }} />
+    <section id="waitlist" className="relative overflow-hidden border-b border-line/60">
+      <div className="absolute inset-0 hairline-grid" aria-hidden />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 accent-glow" aria-hidden />
 
-      <div style={{ textAlign: "center" }} className="animate-in">
-        {/* Badge */}
-        <div style={{
-          display: "inline-flex", alignItems: "center", gap: 8,
-          background: "linear-gradient(135deg,#fef08a,#fed7aa)",
-          color: "#92400e", padding: "6px 16px",
-          borderRadius: 20, fontSize: 13, fontWeight: 700,
-          marginBottom: 24
-        }}>
-          <span style={{
-            width: 8, height: 8, borderRadius: "50%",
-            background: "#f97316",
-            boxShadow: "0 0 8px rgba(249,115,22,0.7)",
-            display: "inline-block",
-            animation: "pulse-dot 2s ease-in-out infinite"
-          }} />
-          Now accepting early access — limited spots
-        </div>
+      <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-28 sm:pt-32 sm:pb-36">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="animate-fade-in inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-3 py-1">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgba(94,106,210,0.8)]" />
+            <span className="font-mono text-[11px] uppercase tracking-widemono text-ink-secondary">
+              Now in private beta
+            </span>
+          </div>
 
-        {/* Headline */}
-        <h1 className="animate-in delay-1" style={{
-          fontSize: "clamp(2.5rem,7vw,4.5rem)",
-          fontFamily: "'Space Grotesk',sans-serif",
-          letterSpacing: -2, marginBottom: 24, color: "#0f172a"
-        }}>
-          Is your vibe-coded app<br />
-          <span style={{
-            background: "linear-gradient(135deg,#f97316,#6366f1)",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"
-          }}>actually launch-safe?</span>
-        </h1>
+          <h1 className="animate-fade-up mt-7 text-display-sm sm:text-display text-ink-primary">
+            Ship vibe-coded apps
+            <br />
+            <span className="text-ink-secondary">without the leaks.</span>
+          </h1>
 
-        {/* Sub */}
-        <p className="animate-in delay-2" style={{
-          fontSize: "clamp(1rem,2.5vw,1.2rem)",
-          color: "#64748b", maxWidth: 640,
-          margin: "0 auto 2.5rem",
-          lineHeight: 1.7
-        }}>
-          VibeAudit scans apps built with Cursor, Lovable, Bolt, and v0 for exposed API keys,
-          missing auth, broken payments, and 100+ other issues — then gives you paste-ready
-          fix prompts for your AI coding tool.
-        </p>
+          <p className="animate-fade-up mt-6 text-[16px] leading-[1.55] text-ink-secondary [animation-delay:80ms]">
+            VibeAudit scans apps built with Cursor, Lovable, Bolt, and v0 for exposed API keys,
+            missing auth, and 100+ launch-blocking issues — then writes the fix prompts for you.
+          </p>
 
-        {/* Card */}
-        <div className="animate-in delay-3" style={{
-          maxWidth: 460, margin: "0 auto",
-          background: "#fff",
-          border: "2px solid #e2e8f0",
-          borderRadius: 16,
-          padding: "2rem",
-          boxShadow: "0 20px 50px rgba(0,0,0,0.08)"
-        }}>
-          {joined ? (
-            <div style={{ textAlign: "center", padding: "1rem 0" }}>
-              <div style={{ fontSize: 40, marginBottom: 12 }}>🎉</div>
-              <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", color: "#0f172a", marginBottom: 8 }}>
-                You&apos;re on the list!
-              </h3>
-              <p style={{ color: "#64748b", fontSize: 14 }}>
-                Check your inbox — we sent a confirmation. We&apos;ll email you the moment access opens.
-              </p>
-            </div>
-          ) : (
-            <>
+          <div className="animate-fade-up mx-auto mt-9 max-w-md [animation-delay:160ms]">
+            {joined ? (
+              <div className="rounded-[8px] border border-line bg-surface p-5 text-left">
+                <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">
+                  Confirmed
+                </div>
+                <p className="mt-2 text-[14px] text-ink-primary">
+                  You&apos;re on the list. We&apos;ll email you when access opens.
+                </p>
+              </div>
+            ) : (
               <WaitlistForm onSuccess={() => setJoined(true)} />
-              <p style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid #e2e8f0", fontSize: 13, color: "#94a3b8", textAlign: "center" }}>
-                No spam. One email when we launch.
-              </p>
-            </>
-          )}
+            )}
+          </div>
+
+          <div className="animate-fade-up mt-6 flex items-center justify-center gap-2 [animation-delay:240ms]">
+            <div className="flex -space-x-1.5">
+              {["#3F4147", "#5E6AD2", "#4CB782", "#EB5757"].map((c) => (
+                <span
+                  key={c}
+                  className="h-5 w-5 rounded-full border border-bg"
+                  style={{ background: c }}
+                />
+              ))}
+            </div>
+            <span className="text-[12px] text-ink-tertiary">
+              2,400+ developers on the waitlist
+            </span>
+          </div>
         </div>
 
-        {/* Stats */}
-        <div className="animate-in delay-4" style={{
-          marginTop: 40,
-          display: "flex", flexWrap: "wrap",
-          justifyContent: "center", gap: 32
-        }}>
-          {[
-            ["11", "audit categories"],
-            ["100+", "checks per scan"],
-            ["30s", "to your score"],
-            ["500", "early access spots"],
-          ].map(([val, label]) => (
-            <div key={label} style={{ textAlign: "center" }}>
-              <div style={{
-                fontFamily: "'Space Grotesk',sans-serif",
-                fontSize: 24, fontWeight: 800,
-                background: "linear-gradient(135deg,#f97316,#6366f1)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"
-              }}>{val}</div>
-              <div style={{ fontSize: 13, color: "#64748b", fontWeight: 600 }}>{label}</div>
-            </div>
-          ))}
-        </div>
+        <TerminalPreview />
       </div>
     </section>
+  )
+}
+
+function TerminalPreview() {
+  const lines: { c: string; t: string }[] = [
+    { c: "text-ink-tertiary", t: "$ vibeaudit scan https://my-app.vercel.app" },
+    { c: "text-ink-secondary", t: "→ Detecting framework: Next.js 14 + Supabase + Stripe" },
+    { c: "text-ink-secondary", t: "→ Scanning JS bundles for secrets…" },
+    { c: "text-warn", t: "  CRITICAL  Stripe secret key in client bundle" },
+    { c: "text-[#E2B341]", t: "  HIGH      No Content-Security-Policy header" },
+    { c: "text-ink-secondary", t: "  MEDIUM    Missing OG meta tags (3 pages)" },
+    { c: "text-success", t: "  PASS      HTTPS enforced" },
+    { c: "text-ink-primary", t: "  Score 42 / 100 · 1 critical · 4 high · 7 medium" },
+    { c: "text-accent", t: "✓ Fix prompts ready. Paste into Cursor." },
+  ]
+  return (
+    <div className="animate-fade-up mx-auto mt-20 max-w-4xl [animation-delay:320ms]">
+      <div className="overflow-hidden rounded-[10px] border border-line bg-surface shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+        <div className="flex items-center gap-2 border-b border-line bg-elevated px-4 py-2.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#3F4147]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#3F4147]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#3F4147]" />
+          <span className="ml-2 font-mono text-[11px] text-ink-tertiary">
+            ~/projects/my-app — vibeaudit
+          </span>
+        </div>
+        <pre className="m-0 p-5 font-mono text-[12.5px] leading-[1.75]">
+          {lines.map((l, i) => (
+            <div key={i} className={l.c}>
+              {l.t}
+            </div>
+          ))}
+          <div className="text-ink-primary">
+            $ <span className="animate-blink">▍</span>
+          </div>
+        </pre>
+      </div>
+    </div>
   )
 }

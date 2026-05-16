@@ -8,34 +8,52 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
-        bg: "#07080d",
-        card: "#0e1018",
-        border: "#1a1d2e",
-        indigo: {
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
+        bg: "#08090A",
+        surface: "#0D0E10",
+        elevated: "#101113",
+        line: "#1F2023",
+        ink: {
+          primary: "#F7F8F8",
+          secondary: "#8A8F98",
+          tertiary: "#62666D",
+          quaternary: "#3F4147",
         },
+        accent: {
+          DEFAULT: "#5E6AD2",
+          hover: "#7170FF",
+          soft: "rgba(94,106,210,0.10)",
+          ring: "rgba(94,106,210,0.35)",
+        },
+        warn: "#EB5757",
+        success: "#4CB782",
+      },
+      letterSpacing: {
+        tightish: "-0.011em",
+        tighter2: "-0.022em",
+        widemono: "0.08em",
+      },
+      fontSize: {
+        "display": ["64px", { lineHeight: "1.05", letterSpacing: "-0.022em", fontWeight: "560" }],
+        "display-sm": ["44px", { lineHeight: "1.08", letterSpacing: "-0.022em", fontWeight: "560" }],
+        "h2": ["40px", { lineHeight: "1.12", letterSpacing: "-0.022em", fontWeight: "560" }],
       },
       animation: {
-        "ping-slow": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
-        "fade-up": "fadeUp 0.5s ease-out both",
-        "scan-beam": "scanBeam 2.4s linear infinite",
+        "fade-up": "fadeUp 0.6s ease-out both",
+        "fade-in": "fadeIn 0.6s ease-out both",
         "blink": "blink 1s step-end infinite",
-        "count-up": "fadeUp 0.6s ease-out both",
       },
       keyframes: {
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        scanBeam: {
-          "0%": { transform: "translateX(-50%)" },
-          "100%": { transform: "translateX(400%)" },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
         blink: {
           "0%, 49%": { opacity: "1" },

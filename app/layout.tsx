@@ -1,32 +1,45 @@
 import type { Metadata } from "next"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+})
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vibeaudit.dev"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "VibeAudit — Join the Waitlist",
+  title: "VibeAudit — Production scanner for vibe-coded apps",
   description:
-    "The production-readiness scanner for apps built with Cursor, Lovable, Bolt, and v0. Catch exposed API keys, missing auth, and 100+ issues before your users do. Join the waitlist for early access + 50% off.",
+    "Catch exposed API keys, broken auth, and 100+ launch-blocking issues in apps built with Cursor, Lovable, Bolt, and v0. Join the waitlist.",
   openGraph: {
-    title: "VibeAudit — Is your vibe-coded app actually launch-safe?",
-    description: "Join the waitlist. Early access + 50% off when we launch.",
+    title: "VibeAudit — Production scanner for vibe-coded apps",
+    description: "Join the waitlist for early access.",
     url: SITE_URL,
     siteName: "VibeAudit",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VibeAudit — Join the Waitlist",
-    description: "Early access + 50% off for the first 500 people.",
+    title: "VibeAudit — Production scanner for vibe-coded apps",
+    description: "Join the waitlist.",
   },
   robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
+      <body className="bg-bg text-ink-primary antialiased">{children}</body>
     </html>
   )
 }
