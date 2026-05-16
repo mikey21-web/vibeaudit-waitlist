@@ -18,20 +18,19 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vibeaudit.dev"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "VibeAudit — Your Cursor app is leaking. Find out where.",
+  title: "VibeAudit — Production scanner for vibe-coded apps",
   description:
-    "Scans apps built with Cursor, Lovable, Bolt, and v0 for exposed keys, broken auth, and 100+ launch-blocking issues — and writes the fix prompts. Join the waitlist.",
+    "Catch exposed API keys, broken auth, and 100+ launch-blocking issues in apps built with Cursor, Lovable, Bolt, and v0. Join the waitlist.",
   openGraph: {
-    title: "VibeAudit — Your Cursor app is leaking. Find out where.",
-    description:
-      "Scans apps built with Cursor, Lovable, Bolt, and v0 for exposed keys, broken auth, and 100+ launch-blocking issues.",
+    title: "VibeAudit — Production scanner for vibe-coded apps",
+    description: "Join the waitlist for early access.",
     url: SITE_URL,
     siteName: "VibeAudit",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VibeAudit — Your Cursor app is leaking. Find out where.",
+    title: "VibeAudit — Production scanner for vibe-coded apps",
     description: "Join the waitlist.",
   },
   robots: { index: true, follow: true },

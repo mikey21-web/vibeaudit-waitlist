@@ -11,6 +11,23 @@ export function Navbar() {
           <span className="text-[14px] font-medium tracking-tightish">VibeAudit</span>
         </a>
 
+        <div className="hidden items-center gap-7 md:flex">
+          {[
+            ["#scan", "Scan"],
+            ["#catch", "What we catch"],
+            ["#flow", "Flow"],
+            ["#pricing", "Pricing"],
+          ].map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              className="text-[13px] text-ink-secondary transition-colors hover:text-ink-primary"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+
         <a
           href="#waitlist"
           className="inline-flex h-7 items-center rounded-[5px] bg-ink-primary px-3 text-[12px] font-medium text-bg transition-colors hover:bg-ink-secondary"
