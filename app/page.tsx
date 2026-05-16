@@ -1,8 +1,7 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
-import { Problems } from "@/components/problems"
-import { HowItWorks } from "@/components/how-it-works"
-import { Perks } from "@/components/perks"
+import { ProofStrip } from "@/components/proof-strip"
+import { YouGet } from "@/components/you-get"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -10,9 +9,8 @@ export default function Home() {
     <main className="min-h-screen bg-bg text-ink-primary">
       <Navbar />
       <Hero />
-      <Problems />
-      <HowItWorks />
-      <Perks />
+      <ProofStrip />
+      <YouGet />
       <Footer />
     </main>
   )
