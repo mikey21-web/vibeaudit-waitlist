@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "VibeAudit — Production scanner for vibe-coded apps",
   description:
-    "Catch exposed API keys, broken auth, and 100+ launch-blocking issues in apps built with Cursor, Lovable, Bolt, and v0. Join the waitlist.",
+    "Catch exposed API keys, broken auth, and 100+ launch-blocking issues in apps built with Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0. Join the waitlist.",
   openGraph: {
     title: "VibeAudit — Production scanner for vibe-coded apps",
     description: "Join the waitlist for early access.",

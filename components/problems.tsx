@@ -47,8 +47,8 @@ export function Problems() {
             Issues we find in 9 out of 10 vibe-coded apps.
           </h2>
           <p className="mt-4 text-[15px] leading-[1.6] text-ink-secondary">
-            We scanned 2,700+ apps shipped from Cursor, Lovable, Bolt, and v0. These show up over
-            and over.
+            We scanned 2,700+ apps shipped from Claude Code, Cursor, Antigravity, Lovable, Bolt,
+            and v0. These show up over and over.
           </p>
         </Reveal>
 

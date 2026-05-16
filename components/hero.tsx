@@ -45,8 +45,9 @@ export function Hero() {
         </h1>
 
         <p className="reveal reveal-d2 show mx-auto mt-6 max-w-xl text-center text-[16px] leading-[1.55] text-ink-secondary sm:text-[17px]">
-          VibeAudit scans apps built with Cursor, Lovable, Bolt, and v0 for exposed API keys,
-          broken auth, and 100+ launch-blocking issues — then writes the fix prompts for you.
+          VibeAudit scans apps shipped from Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0
+          for exposed API keys, broken auth, and 100+ launch-blocking issues — then writes the fix
+          prompts for you.
         </p>
 
         <div className="reveal reveal-d3 show mx-auto mt-10 max-w-xl">

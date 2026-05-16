@@ -92,7 +92,7 @@ function buildEmail({ name, siteUrl }: { name?: string; siteUrl: string }) {
               You're on the waitlist 🎉
             </h1>
             <p style="margin:0 0 20px;font-size:15px;color:#64748b;line-height:1.6;">
-              ${greeting} thanks for signing up. We're putting the finishing touches on VibeAudit — the production-readiness scanner for apps built with Cursor, Lovable, Bolt, and v0.
+              ${greeting} thanks for signing up. We're putting the finishing touches on VibeAudit — the production-readiness scanner for apps built with Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0.
             </p>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;margin-bottom:24px;">
               <tr><td style="padding:20px 24px;">
