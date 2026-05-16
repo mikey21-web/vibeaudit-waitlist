@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { WaitlistForm } from "./waitlist-form"
 import { RotatingWord } from "./rotating-word"
-import { AnimatedCount } from "./animated-count"
+import { LiveTicker } from "./live-ticker"
 
 export function Hero() {
   const [joined, setJoined] = useState(false)
@@ -63,20 +63,8 @@ export function Hero() {
           )}
         </div>
 
-        <div className="reveal reveal-d4 show mt-8 flex items-center justify-center gap-3">
-          <div className="flex -space-x-2">
-            {["#3F4147", "#5E6AD2", "#4CB782", "#EB5757", "#E2B341"].map((c, i) => (
-              <span
-                key={c}
-                className="avatar-pop h-6 w-6 rounded-full border-2 border-bg"
-                style={{ background: c, animationDelay: `${500 + i * 80}ms` }}
-              />
-            ))}
-          </div>
-          <span className="text-[13px] text-ink-secondary">
-            <AnimatedCount to={2418} className="font-medium text-ink-primary" />
-            <span> developers waiting</span>
-          </span>
+        <div className="reveal reveal-d4 show mt-8 flex justify-center">
+          <LiveTicker />
         </div>
 
         <div className="reveal reveal-d5 show mt-4 flex items-center justify-center gap-6 text-[11px] text-ink-tertiary">
