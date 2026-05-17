@@ -9,6 +9,7 @@ interface Props {
 
 export function WaitlistForm({ onSuccess, size = "lg" }: Props) {
   const [email, setEmail] = useState("")
+  const [company, setCompany] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const isLg = size === "lg"
@@ -25,7 +26,7 @@ export function WaitlistForm({ onSuccess, size = "lg" }: Props) {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), company }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -42,6 +43,18 @@ export function WaitlistForm({ onSuccess, size = "lg" }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
+      <div aria-hidden style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor="company-website">Company website</label>
+        <input
+          type="text"
+          id="company-website"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+      </div>
       <div
         className={`ring-pulse flex w-full items-stretch overflow-hidden rounded-[10px] border border-line bg-surface/90 backdrop-blur transition-colors focus-within:border-accent ${
           isLg ? "h-14" : "h-11"

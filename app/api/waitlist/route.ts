@@ -5,6 +5,7 @@ import { z } from "zod"
 const schema = z.object({
   email: z.string().email("Please enter a valid email address"),
   name: z.string().max(80).optional(),
+  company: z.string().max(200).optional(),
 })
 
 function getResend() {
@@ -26,7 +27,13 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const { email, name } = parsed.data
+    const { email, name, company } = parsed.data
+
+    // Honeypot: real users leave this empty; bots fill it
+    if (company && company.trim().length > 0) {
+      return NextResponse.json({ success: true })
+    }
+
     const resend = getResend()
 
     // Add to Resend Audience (free waitlist DB — no extra infra needed)
