@@ -4,6 +4,7 @@ import { useState } from "react"
 import { WaitlistForm } from "./waitlist-form"
 import { RotatingWord } from "./rotating-word"
 import { LiveTicker } from "./live-ticker"
+import { TypingTerminal, TermLine } from "./typing-terminal"
 
 export function Hero() {
   const [joined, setJoined] = useState(false)
@@ -106,37 +107,20 @@ function SuccessCard() {
 }
 
 function TerminalPreview() {
-  const lines: { c: string; t: string; delay: number }[] = [
-    { c: "text-ink-tertiary", t: "$ vibeaudit scan https://my-app.vercel.app", delay: 0 },
-    { c: "text-ink-secondary", t: "→ Detecting framework: Next.js 14 + Supabase + Stripe", delay: 240 },
-    { c: "text-ink-secondary", t: "→ Scanning JS bundles for secrets…", delay: 460 },
-    { c: "text-warn", t: "  CRITICAL  Stripe secret key in client bundle", delay: 680 },
-    { c: "text-[#E2B341]", t: "  HIGH      No Content-Security-Policy header", delay: 860 },
-    { c: "text-ink-secondary", t: "  MEDIUM    Missing OG meta tags (3 pages)", delay: 1040 },
-    { c: "text-success", t: "  PASS      HTTPS enforced", delay: 1220 },
-    { c: "text-ink-primary", t: "  Score 42 / 100 · 1 critical · 4 high · 7 medium", delay: 1440 },
-    { c: "text-accent", t: "✓ Fix prompts ready. Paste into Cursor.", delay: 1680 },
+  const lines: TermLine[] = [
+    { c: "text-ink-tertiary", t: "$ vibeaudit scan https://my-app.vercel.app", pause: 320 },
+    { c: "text-ink-secondary", t: "→ Detecting framework: Next.js 14 + Supabase + Stripe", pause: 260 },
+    { c: "text-ink-secondary", t: "→ Scanning JS bundles for secrets…", pause: 420 },
+    { c: "text-warn", t: "  CRITICAL  Stripe secret key in client bundle", pause: 240 },
+    { c: "text-[#E2B341]", t: "  HIGH      No Content-Security-Policy header", pause: 220 },
+    { c: "text-ink-secondary", t: "  MEDIUM    Missing OG meta tags (3 pages)", pause: 220 },
+    { c: "text-success", t: "  PASS      HTTPS enforced", pause: 320 },
+    { c: "text-ink-primary", t: "  Score 42 / 100 · 1 critical · 4 high · 7 medium", pause: 360 },
+    { c: "text-accent", t: "✓ Fix prompts ready. Paste into Cursor.", pause: 800 },
   ]
   return (
-    <div className="reveal reveal-d6 show overflow-hidden rounded-[12px] border border-line bg-surface shadow-[0_40px_120px_-30px_rgba(94,106,210,0.35)]">
-      <div className="flex items-center gap-2 border-b border-line bg-elevated px-4 py-2.5">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#EB5757]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#E2B341]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#4CB782]" />
-        <span className="ml-2 font-mono text-[11px] text-ink-tertiary">
-          ~/projects/my-app — vibeaudit
-        </span>
-      </div>
-      <pre className="m-0 p-5 font-mono text-[12.5px] leading-[1.8]">
-        {lines.map((l, i) => (
-          <div key={i} className={`term-line ${l.c}`} style={{ animationDelay: `${l.delay}ms` }}>
-            {l.t}
-          </div>
-        ))}
-        <div className="text-ink-primary" style={{ animationDelay: `1900ms` }}>
-          $ <span className="animate-blink">▍</span>
-        </div>
-      </pre>
+    <div className="reveal reveal-d6 show">
+      <TypingTerminal lines={lines} loop restartDelay={3200} />
     </div>
   )
 }
