@@ -5,7 +5,7 @@ export const alt = "DeploySafe — We hack you, then we patch you"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-const MONO = "'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+const MONO = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
 
 export default async function OGImage() {
   return new ImageResponse(
@@ -18,64 +18,37 @@ export default async function OGImage() {
           flexDirection: "column",
           background: "#0a0a0f",
           color: "#ffffff",
-          fontFamily:
-            "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+          padding: "64px 80px",
           position: "relative",
-          padding: 0,
         }}
       >
         <div
           style={{
             position: "absolute",
-            inset: 0,
+            top: 0,
+            left: 0,
+            width: 800,
+            height: 600,
             display: "flex",
             background:
-              "linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 50%, #0a0a0f 100%)",
+              "radial-gradient(ellipse 600px 300px at 20% 10%, rgba(99,102,241,0.22), transparent 60%)",
           }}
         />
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            display: "flex",
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: -200,
-            left: 200,
-            width: 800,
+            right: 0,
+            bottom: 0,
+            width: 600,
             height: 400,
             display: "flex",
             background:
-              "radial-gradient(ellipse at center, rgba(99,102,241,0.18), transparent 60%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: -80,
-            right: -80,
-            width: 400,
-            height: 200,
-            display: "flex",
-            background:
-              "radial-gradient(ellipse at center, rgba(239,68,68,0.10), transparent 60%)",
+              "radial-gradient(ellipse 500px 250px at 85% 90%, rgba(239,68,68,0.12), transparent 60%)",
           }}
         />
 
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            flex: 1,
-            padding: "64px 80px 0 80px",
-          }}
-        >
+        <div style={{ display: "flex", flex: 1 }}>
           <div
             style={{
               display: "flex",
@@ -86,59 +59,49 @@ export default async function OGImage() {
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
                 alignSelf: "flex-start",
                 padding: "6px 14px",
                 borderRadius: 999,
-                border: "1px solid rgba(99,102,241,0.30)",
-                background: "rgba(99,102,241,0.10)",
-                fontSize: 12,
+                border: "1px solid rgba(99,102,241,0.35)",
+                background: "rgba(99,102,241,0.12)",
+                fontSize: 13,
                 fontWeight: 700,
-                letterSpacing: 1,
+                letterSpacing: 1.2,
                 color: "#a5b4fc",
               }}
             >
-              🟢 PRIVATE BETA · WAITLIST OPEN
+              PRIVATE BETA · WAITLIST OPEN
             </div>
 
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                marginTop: 24,
+                marginTop: 28,
               }}
             >
               <div
                 style={{
-                  width: 44,
-                  height: 44,
+                  width: 48,
+                  height: 48,
                   borderRadius: 12,
-                  background: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                  background: "linear-gradient(135deg, #7170FF, #5E6AD2)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  color: "white",
+                  fontSize: 26,
+                  fontWeight: 800,
                 }}
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-                    fill="white"
-                  />
-                </svg>
+                D
               </div>
               <div
                 style={{
-                  marginLeft: 12,
-                  fontSize: 28,
+                  marginLeft: 14,
+                  fontSize: 30,
                   fontWeight: 700,
-                  color: "white",
-                  letterSpacing: -0.5,
+                  letterSpacing: -0.4,
                   display: "flex",
                 }}
               >
@@ -150,15 +113,15 @@ export default async function OGImage() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                marginTop: 32,
+                marginTop: 36,
               }}
             >
               <div
                 style={{
-                  fontSize: 44,
+                  fontSize: 46,
                   fontWeight: 700,
                   letterSpacing: -1.5,
-                  color: "white",
+                  color: "#ffffff",
                   lineHeight: 1.08,
                   display: "flex",
                 }}
@@ -167,10 +130,10 @@ export default async function OGImage() {
               </div>
               <div
                 style={{
-                  fontSize: 44,
+                  fontSize: 46,
                   fontWeight: 700,
                   letterSpacing: -1.5,
-                  color: "white",
+                  color: "#ffffff",
                   lineHeight: 1.08,
                   display: "flex",
                 }}
@@ -179,17 +142,13 @@ export default async function OGImage() {
               </div>
               <div
                 style={{
-                  marginTop: 8,
-                  fontSize: 52,
+                  marginTop: 6,
+                  fontSize: 56,
                   fontWeight: 800,
                   letterSpacing: -2,
                   lineHeight: 1.05,
+                  color: "#818cf8",
                   display: "flex",
-                  backgroundImage:
-                    "linear-gradient(90deg, #818cf8, #60a5fa)",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  color: "transparent",
                 }}
               >
                 We hack you.
@@ -198,11 +157,11 @@ export default async function OGImage() {
 
             <div
               style={{
-                marginTop: 20,
-                maxWidth: 560,
+                marginTop: 22,
                 fontSize: 17,
                 color: "#a1a1aa",
                 lineHeight: 1.4,
+                maxWidth: 560,
                 display: "flex",
               }}
             >
@@ -214,30 +173,37 @@ export default async function OGImage() {
               style={{
                 display: "flex",
                 marginTop: 28,
-                gap: 8,
               }}
             >
-              {[
-                "🟢 LIVE — early access opening",
-                "⚡ 50% OFF — first 500 only",
-                "🚀 Launching soon",
-              ].map((label) => (
-                <div
-                  key={label}
-                  style={{
-                    display: "flex",
-                    padding: "7px 12px",
-                    borderRadius: 8,
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    background: "rgba(255,255,255,0.03)",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: "#e4e4e7",
-                  }}
-                >
-                  {label}
-                </div>
-              ))}
+              <div
+                style={{
+                  display: "flex",
+                  padding: "7px 12px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  background: "rgba(255,255,255,0.04)",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#e4e4e7",
+                  marginRight: 8,
+                }}
+              >
+                50% OFF — first 500 only
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  padding: "7px 12px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  background: "rgba(255,255,255,0.04)",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#e4e4e7",
+                }}
+              >
+                Launching soon
+              </div>
             </div>
           </div>
 
@@ -247,20 +213,19 @@ export default async function OGImage() {
               flex: 1,
               alignItems: "center",
               justifyContent: "flex-end",
-              paddingLeft: 24,
+              marginLeft: 24,
             }}
           >
             <div
               style={{
-                width: 460,
+                width: 440,
                 height: 380,
                 display: "flex",
                 flexDirection: "column",
                 borderRadius: 16,
-                border: "1px solid rgba(239,68,68,0.25)",
+                border: "1px solid rgba(239,68,68,0.30)",
                 background: "#0d0d12",
                 overflow: "hidden",
-                boxShadow: "0 40px 80px -30px rgba(239,68,68,0.30)",
               }}
             >
               <div
@@ -268,10 +233,10 @@ export default async function OGImage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  height: 36,
+                  height: 38,
                   padding: "0 14px",
-                  background: "rgba(255,255,255,0.02)",
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  background: "rgba(255,255,255,0.03)",
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -313,36 +278,19 @@ export default async function OGImage() {
                       display: "flex",
                     }}
                   >
-                    attack-replay › POST /api/webhooks/stripe
+                    deploysafe ▸ attack-replay
                   </div>
                 </div>
                 <div
                   style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: 1.5,
+                    color: "#ef4444",
                     display: "flex",
-                    alignItems: "center",
                   }}
                 >
-                  <div
-                    style={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: 999,
-                      background: "#ef4444",
-                      display: "flex",
-                    }}
-                  />
-                  <div
-                    style={{
-                      marginLeft: 6,
-                      fontSize: 10,
-                      fontWeight: 700,
-                      letterSpacing: 1.5,
-                      color: "#ef4444",
-                      display: "flex",
-                    }}
-                  >
-                    LIVE
-                  </div>
+                  ● LIVE
                 </div>
               </div>
 
@@ -353,64 +301,63 @@ export default async function OGImage() {
                   padding: 18,
                   fontFamily: MONO,
                   fontSize: 12.5,
-                  lineHeight: 1.6,
+                  lineHeight: 1.7,
                   flex: 1,
                 }}
               >
                 <div style={{ color: "#d4d4d8", display: "flex" }}>
                   $ deploysafe scan https://my-app.vercel.app
                 </div>
-
-                <div style={{ height: 12, display: "flex" }} />
-
-                <div style={{ color: "#71717a", display: "flex" }}>
-                  → Detecting framework · Next.js 14 + Supabase + Stripe
+                <div
+                  style={{
+                    color: "#71717a",
+                    display: "flex",
+                    marginTop: 10,
+                  }}
+                >
+                  → Stack: Next.js 14 · Supabase · Stripe
                 </div>
                 <div style={{ color: "#71717a", display: "flex" }}>
-                  → Running 17 categories · 100+ checks
+                  → 17 categories · 100+ checks
                 </div>
-
-                <div style={{ height: 12, display: "flex" }} />
-
                 <div
                   style={{
                     color: "#fb923c",
-                    fontWeight: 600,
                     display: "flex",
+                    fontWeight: 600,
+                    marginTop: 12,
                   }}
                 >
                   ⚠ Stripe webhook signature missing
                 </div>
-
-                <div style={{ height: 12, display: "flex" }} />
-
-                <div style={{ color: "#fde047", display: "flex" }}>
-                  ▶ Replaying attack...
+                <div
+                  style={{
+                    color: "#fde047",
+                    display: "flex",
+                    marginTop: 12,
+                  }}
+                >
+                  ▶ Replaying attack…
                 </div>
                 <div style={{ color: "#fde047", display: "flex" }}>
-                  → POST /api/webhooks/stripe
+                  → POST /api/webhooks/stripe (forged)
                 </div>
-                <div style={{ color: "#fde047", display: "flex" }}>
-                  → x-stripe-signature: (forged)
+                <div
+                  style={{
+                    color: "#34d399",
+                    display: "flex",
+                    marginTop: 10,
+                  }}
+                >
+                  ← HTTP 200 OK
                 </div>
-
-                <div style={{ height: 12, display: "flex" }} />
-
-                <div style={{ color: "#34d399", display: "flex" }}>
-                  ← HTTP/1.1 200 OK
-                </div>
-                <div style={{ color: "#34d399", display: "flex" }}>
-                  ← {"{\"received\":true}"}
-                </div>
-
-                <div style={{ height: 12, display: "flex" }} />
-
                 <div
                   style={{
                     color: "#f87171",
-                    fontWeight: 700,
-                    fontSize: 13.5,
                     display: "flex",
+                    fontWeight: 700,
+                    fontSize: 13,
+                    marginTop: 12,
                   }}
                 >
                   🚨 Attack succeeded — plan unlocked without payment
@@ -422,12 +369,10 @@ export default async function OGImage() {
 
         <div
           style={{
-            position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            height: 50,
-            padding: "0 80px",
+            marginTop: 24,
           }}
         >
           <div
@@ -435,7 +380,7 @@ export default async function OGImage() {
               fontFamily: MONO,
               fontSize: 16,
               fontWeight: 600,
-              color: "#6366f1",
+              color: "#818cf8",
               display: "flex",
             }}
           >
@@ -443,13 +388,12 @@ export default async function OGImage() {
           </div>
           <div
             style={{
-              fontSize: 13,
-              fontWeight: 500,
+              fontSize: 14,
               color: "#71717a",
               display: "flex",
             }}
           >
-            Launching soon · 50% off first 500
+            We hack you, then we patch you.
           </div>
         </div>
       </div>
