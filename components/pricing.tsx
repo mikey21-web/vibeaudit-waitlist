@@ -13,7 +13,7 @@ interface Feature {
 interface Tier {
   name: string
   tagline: string
-  monthly: { price: number; billed?: string }
+  monthly: { price: number }
   annual: { price: number; billed: string }
   features: Feature[]
   cta: string
@@ -29,14 +29,16 @@ const tiers: Tier[] = [
     cta: "Get Starter",
     features: [
       { text: "1 project" },
-      { text: "30 scans/mo" },
+      { text: "30 scans/month" },
       { text: "1 API key" },
+      { text: "17 scan categories" },
       { text: "100+ security checks" },
-      { text: "MCP server support" },
+      { text: "Active pentest probes", tag: "NEW" },
       { text: "AI fix prompts" },
-      { text: "PDF export & AI fix" },
+      { text: "PDF export" },
+      { text: "Live attack replay", tag: "NEW" },
+      { text: "MCP server support" },
       { text: "API access" },
-      { text: "Active security tests", tag: "BETA" },
     ],
   },
   {
@@ -50,14 +52,20 @@ const tiers: Tier[] = [
       { text: "5 projects" },
       { text: "Unlimited scans" },
       { text: "5 API keys" },
-      { text: "MCP server support" },
-      { text: "Daily monitoring" },
+      { text: "17 scan categories" },
       { text: "100+ security checks" },
+      { text: "Active pentest probes", tag: "NEW" },
+      { text: "Supply chain analysis" },
+      { text: "Compliance gap checks" },
       { text: "AI fix prompts" },
-      { text: "PDF export & AI fix" },
+      { text: "PDF export" },
+      { text: "Live attack replay", tag: "NEW" },
+      { text: "Trust badge (score 80+)" },
+      { text: "Daily monitoring" },
+      { text: "Diff reports" },
+      { text: "Slack / Discord alerts" },
+      { text: "MCP server support" },
       { text: "API access" },
-      { text: "Live threat detection" },
-      { text: "Active security tests", tag: "BETA" },
       { text: "Priority support" },
     ],
   },
@@ -71,14 +79,23 @@ const tiers: Tier[] = [
       { text: "50 projects" },
       { text: "Unlimited scans" },
       { text: "20 API keys" },
-      { text: "MCP server support" },
-      { text: "Custom monitoring" },
+      { text: "17 scan categories" },
       { text: "100+ security checks" },
+      { text: "Active pentest probes", tag: "NEW" },
+      { text: "Supply chain analysis" },
+      { text: "Compliance gap checks" },
+      { text: "Breach monitoring" },
       { text: "AI fix prompts" },
-      { text: "PDF export & AI fix" },
+      { text: "PDF export" },
+      { text: "Live attack replay", tag: "NEW" },
+      { text: "Trust badge (score 80+)" },
+      { text: "Custom monitoring" },
+      { text: "Diff reports" },
+      { text: "Slack / Discord alerts" },
+      { text: "Team workspace" },
+      { text: "GitHub PR auto-fix", tag: "SOON" },
+      { text: "MCP server support" },
       { text: "API access" },
-      { text: "Live threat detection" },
-      { text: "Active security tests", tag: "BETA" },
       { text: "Dedicated support" },
     ],
   },
@@ -121,11 +138,11 @@ export function Pricing() {
           <div
             role="tablist"
             aria-label="Billing period"
-            className="relative inline-flex items-center rounded-full border border-line bg-surface/80 p-1 backdrop-blur"
+            className="relative inline-grid w-[300px] grid-cols-2 rounded-full border border-line bg-surface/80 p-1 backdrop-blur"
           >
             <span
               aria-hidden
-              className={`absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-ink-primary transition-transform duration-300 ease-out ${
+              className={`pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-ink-primary transition-transform duration-300 ease-out ${
                 period === "annual" ? "translate-x-full" : "translate-x-0"
               }`}
             />
@@ -133,7 +150,7 @@ export function Pricing() {
               role="tab"
               aria-selected={period === "monthly"}
               onClick={() => setPeriod("monthly")}
-              className={`relative z-10 px-5 py-2 text-[13px] font-medium transition-colors ${
+              className={`relative z-10 py-2 text-[13px] font-medium transition-colors ${
                 period === "monthly" ? "text-bg" : "text-ink-secondary"
               }`}
             >
@@ -143,7 +160,7 @@ export function Pricing() {
               role="tab"
               aria-selected={period === "annual"}
               onClick={() => setPeriod("annual")}
-              className={`relative z-10 inline-flex items-center gap-2 px-5 py-2 text-[13px] font-medium transition-colors ${
+              className={`relative z-10 inline-flex items-center justify-center gap-1.5 py-2 text-[13px] font-medium transition-colors ${
                 period === "annual" ? "text-bg" : "text-ink-secondary"
               }`}
             >
@@ -181,11 +198,9 @@ export function Pricing() {
                   </div>
                 )}
 
-                <div className="flex items-baseline justify-between">
-                  <h3 className="text-[20px] font-medium tracking-tightish text-ink-primary">
-                    {tier.name}
-                  </h3>
-                </div>
+                <h3 className="text-[20px] font-medium tracking-tightish text-ink-primary">
+                  {tier.name}
+                </h3>
                 <p className="mt-1 text-[13px] text-ink-tertiary">{tier.tagline}</p>
 
                 <div className="mt-6 flex items-baseline gap-2">
@@ -204,8 +219,11 @@ export function Pricing() {
                       ${crossed}
                     </span>
                   )}
-                  {period === "annual" && <span>{tier.annual.billed}</span>}
-                  {period === "monthly" && <span>Billed monthly</span>}
+                  {period === "annual" ? (
+                    <span>{tier.annual.billed}</span>
+                  ) : (
+                    <span>Billed monthly</span>
+                  )}
                 </div>
 
                 <a
