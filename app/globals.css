@@ -3,10 +3,26 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis manages smooth scrolling itself; native smooth fights it */
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #08090A;
+}
+
+/* Lenis sets these automatically when active, but we set sensible defaults */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 body {
@@ -17,7 +33,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Stop horizontal overflow only; never block vertical scroll */
+  /* Stop horizontal overflow without breaking vertical scroll */
   overflow-x: clip;
 }
 
@@ -80,34 +96,31 @@ a, button, input, textarea, select {
   }
 }
 
-/* reveal on view — subtle fade, minimal translate to avoid scroll-induced motion sickness */
+/* reveal on view — works smoothly with Lenis interpolated scrolling */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 6px, 0);
-  transition: opacity 0.35s ease-out,
-              transform 0.35s ease-out;
-  will-change: opacity;
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 .reveal.show {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
-.reveal-d1.show { transition-delay: 40ms; }
-.reveal-d2.show { transition-delay: 80ms; }
-.reveal-d3.show { transition-delay: 120ms; }
-.reveal-d4.show { transition-delay: 160ms; }
-.reveal-d5.show { transition-delay: 200ms; }
-.reveal-d6.show { transition-delay: 240ms; }
-.reveal-d7.show { transition-delay: 280ms; }
+.reveal-d1.show { transition-delay: 60ms; }
+.reveal-d2.show { transition-delay: 120ms; }
+.reveal-d3.show { transition-delay: 180ms; }
+.reveal-d4.show { transition-delay: 240ms; }
+.reveal-d5.show { transition-delay: 300ms; }
+.reveal-d6.show { transition-delay: 360ms; }
+.reveal-d7.show { transition-delay: 420ms; }
 
-/* On phones, kill the translate entirely — pure fade is silky on touch scrolling */
+/* On phones, smaller translate so native momentum scroll stays buttery */
 @media (max-width: 640px) {
   .reveal {
-    transform: none;
-    transition: opacity 0.3s ease-out;
-  }
-  .reveal.show {
-    transform: none;
+    transform: translate3d(0, 8px, 0);
+    transition-duration: 0.4s;
   }
 }
 
