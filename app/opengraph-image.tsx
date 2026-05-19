@@ -5,6 +5,8 @@ export const alt = "DeploySafe — We hack you, then we patch you"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
+const MONO = "'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+
 export default async function OGImage() {
   return new ImageResponse(
     (
@@ -14,181 +16,440 @@ export default async function OGImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "#08090A",
-          color: "#F7F8F8",
-          fontFamily: "system-ui, -apple-system, sans-serif",
+          background: "#0a0a0f",
+          color: "#ffffff",
+          fontFamily:
+            "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
           position: "relative",
-          padding: "64px",
+          padding: 0,
         }}
       >
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "radial-gradient(circle at 75% 35%, rgba(94,106,210,0.20), transparent 55%), radial-gradient(circle at 20% 90%, rgba(235,87,87,0.10), transparent 55%)",
             display: "flex",
+            background:
+              "linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 50%, #0a0a0f 100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: -200,
+            left: 200,
+            width: 800,
+            height: 400,
+            display: "flex",
+            background:
+              "radial-gradient(ellipse at center, rgba(99,102,241,0.18), transparent 60%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: -80,
+            right: -80,
+            width: 400,
+            height: 200,
+            display: "flex",
+            background:
+              "radial-gradient(ellipse at center, rgba(239,68,68,0.10), transparent 60%)",
           }}
         />
 
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <svg
-            width="52"
-            height="52"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient
-                id="og-shield"
-                x1="2"
-                y1="2"
-                x2="26"
-                y2="26"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0%" stopColor="#7170FF" />
-                <stop offset="100%" stopColor="#5E6AD2" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M14 2.5 L24 5.5 V13 C24 18.5 19.5 23.5 14 25.5 C8.5 23.5 4 18.5 4 13 V5.5 Z"
-              fill="url(#og-shield)"
-            />
-            <path
-              d="M9 14.5 L12.5 18 L19 10.5"
-              stroke="white"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <div style={{ fontSize: 32, fontWeight: 600, letterSpacing: -0.4 }}>
-            DeploySafe
-          </div>
-        </div>
-
         <div
           style={{
-            marginTop: 64,
+            position: "relative",
             display: "flex",
-            flexDirection: "column",
-            gap: 18,
-          }}
-        >
-          <div
-            style={{
-              fontSize: 22,
-              fontWeight: 600,
-              letterSpacing: 2,
-              textTransform: "uppercase",
-              color: "#EB5757",
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-            }}
-          >
-            <span
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: 999,
-                background: "#EB5757",
-                display: "flex",
-              }}
-            />
-            Live attack replay · industry first
-          </div>
-
-          <div
-            style={{
-              fontSize: 78,
-              fontWeight: 600,
-              lineHeight: 1.06,
-              letterSpacing: -2,
-              maxWidth: 980,
-            }}
-          >
-            We hack you,
-            <br />
-            then we patch you.
-          </div>
-
-          <div
-            style={{
-              fontSize: 28,
-              color: "#8A8F98",
-              maxWidth: 940,
-              lineHeight: 1.35,
-              marginTop: 8,
-            }}
-          >
-            Production-readiness scanner for apps shipped from Claude Code,
-            Cursor, Lovable, Bolt, v0.
-          </div>
-        </div>
-
-        <div
-          style={{
-            marginTop: "auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 24,
+            flex: 1,
+            padding: "64px 80px 0 80px",
           }}
         >
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: 18,
-              background: "#0D0E10",
-              border: "1px solid #1F2023",
-              borderRadius: 14,
-              padding: "16px 22px",
+              flexDirection: "column",
+              width: 620,
             }}
           >
             <div
               style={{
-                fontSize: 56,
-                fontWeight: 600,
-                color: "#EB5757",
-                lineHeight: 1,
-                letterSpacing: -1.5,
+                display: "flex",
+                alignItems: "center",
+                alignSelf: "flex-start",
+                padding: "6px 14px",
+                borderRadius: 999,
+                border: "1px solid rgba(99,102,241,0.30)",
+                background: "rgba(99,102,241,0.10)",
+                fontSize: 12,
+                fontWeight: 700,
+                letterSpacing: 1,
+                color: "#a5b4fc",
               }}
             >
-              42
+              🟢 PRIVATE BETA · WAITLIST OPEN
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <div style={{ fontSize: 14, color: "#62666D", letterSpacing: 1.2 }}>
-                VIBE SCORE
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: 24,
+              }}
+            >
+              <div
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
+                  background: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+                    fill="white"
+                  />
+                </svg>
               </div>
-              <div style={{ fontSize: 18, color: "#F7F8F8" }}>
-                1 critical · 4 high · 7 medium
+              <div
+                style={{
+                  marginLeft: 12,
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color: "white",
+                  letterSpacing: -0.5,
+                  display: "flex",
+                }}
+              >
+                DeploySafe
               </div>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginTop: 32,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 44,
+                  fontWeight: 700,
+                  letterSpacing: -1.5,
+                  color: "white",
+                  lineHeight: 1.08,
+                  display: "flex",
+                }}
+              >
+                We don&apos;t just tell you
+              </div>
+              <div
+                style={{
+                  fontSize: 44,
+                  fontWeight: 700,
+                  letterSpacing: -1.5,
+                  color: "white",
+                  lineHeight: 1.08,
+                  display: "flex",
+                }}
+              >
+                you&apos;re vulnerable.
+              </div>
+              <div
+                style={{
+                  marginTop: 8,
+                  fontSize: 52,
+                  fontWeight: 800,
+                  letterSpacing: -2,
+                  lineHeight: 1.05,
+                  display: "flex",
+                  backgroundImage:
+                    "linear-gradient(90deg, #818cf8, #60a5fa)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                We hack you.
+              </div>
+            </div>
+
+            <div
+              style={{
+                marginTop: 20,
+                maxWidth: 560,
+                fontSize: 17,
+                color: "#a1a1aa",
+                lineHeight: 1.4,
+                display: "flex",
+              }}
+            >
+              Production-readiness scanner for apps shipped from Cursor,
+              Lovable, Bolt, v0, and Claude Code.
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                marginTop: 28,
+                gap: 8,
+              }}
+            >
+              {[
+                "🟢 LIVE — early access opening",
+                "⚡ 50% OFF — first 500 only",
+                "🚀 Launching soon",
+              ].map((label) => (
+                <div
+                  key={label}
+                  style={{
+                    display: "flex",
+                    padding: "7px 12px",
+                    borderRadius: 8,
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.03)",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "#e4e4e7",
+                  }}
+                >
+                  {label}
+                </div>
+              ))}
             </div>
           </div>
 
           <div
             style={{
-              fontSize: 22,
-              color: "#62666D",
               display: "flex",
+              flex: 1,
               alignItems: "center",
-              gap: 10,
+              justifyContent: "flex-end",
+              paddingLeft: 24,
             }}
           >
-            <span
+            <div
               style={{
-                width: 8,
-                height: 8,
-                borderRadius: 999,
-                background: "#4CB782",
+                width: 460,
+                height: 380,
                 display: "flex",
+                flexDirection: "column",
+                borderRadius: 16,
+                border: "1px solid rgba(239,68,68,0.25)",
+                background: "#0d0d12",
+                overflow: "hidden",
+                boxShadow: "0 40px 80px -30px rgba(239,68,68,0.30)",
               }}
-            />
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  height: 36,
+                  padding: "0 14px",
+                  background: "rgba(255,255,255,0.02)",
+                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div
+                    style={{
+                      width: 11,
+                      height: 11,
+                      borderRadius: 999,
+                      background: "#ef4444",
+                      display: "flex",
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: 11,
+                      height: 11,
+                      borderRadius: 999,
+                      background: "#eab308",
+                      marginLeft: 8,
+                      display: "flex",
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: 11,
+                      height: 11,
+                      borderRadius: 999,
+                      background: "#22c55e",
+                      marginLeft: 8,
+                      display: "flex",
+                    }}
+                  />
+                  <div
+                    style={{
+                      marginLeft: 12,
+                      fontSize: 11,
+                      color: "#71717a",
+                      fontFamily: MONO,
+                      display: "flex",
+                    }}
+                  >
+                    attack-replay › POST /api/webhooks/stripe
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: 999,
+                      background: "#ef4444",
+                      display: "flex",
+                    }}
+                  />
+                  <div
+                    style={{
+                      marginLeft: 6,
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: 1.5,
+                      color: "#ef4444",
+                      display: "flex",
+                    }}
+                  >
+                    LIVE
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: 18,
+                  fontFamily: MONO,
+                  fontSize: 12.5,
+                  lineHeight: 1.6,
+                  flex: 1,
+                }}
+              >
+                <div style={{ color: "#d4d4d8", display: "flex" }}>
+                  $ deploysafe scan https://my-app.vercel.app
+                </div>
+
+                <div style={{ height: 12, display: "flex" }} />
+
+                <div style={{ color: "#71717a", display: "flex" }}>
+                  → Detecting framework · Next.js 14 + Supabase + Stripe
+                </div>
+                <div style={{ color: "#71717a", display: "flex" }}>
+                  → Running 17 categories · 100+ checks
+                </div>
+
+                <div style={{ height: 12, display: "flex" }} />
+
+                <div
+                  style={{
+                    color: "#fb923c",
+                    fontWeight: 600,
+                    display: "flex",
+                  }}
+                >
+                  ⚠ Stripe webhook signature missing
+                </div>
+
+                <div style={{ height: 12, display: "flex" }} />
+
+                <div style={{ color: "#fde047", display: "flex" }}>
+                  ▶ Replaying attack...
+                </div>
+                <div style={{ color: "#fde047", display: "flex" }}>
+                  → POST /api/webhooks/stripe
+                </div>
+                <div style={{ color: "#fde047", display: "flex" }}>
+                  → x-stripe-signature: (forged)
+                </div>
+
+                <div style={{ height: 12, display: "flex" }} />
+
+                <div style={{ color: "#34d399", display: "flex" }}>
+                  ← HTTP/1.1 200 OK
+                </div>
+                <div style={{ color: "#34d399", display: "flex" }}>
+                  ← {"{\"received\":true}"}
+                </div>
+
+                <div style={{ height: 12, display: "flex" }} />
+
+                <div
+                  style={{
+                    color: "#f87171",
+                    fontWeight: 700,
+                    fontSize: 13.5,
+                    display: "flex",
+                  }}
+                >
+                  🚨 Attack succeeded — plan unlocked without payment
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: 50,
+            padding: "0 80px",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: MONO,
+              fontSize: 16,
+              fontWeight: 600,
+              color: "#6366f1",
+              display: "flex",
+            }}
+          >
             deploysafe.in
+          </div>
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 500,
+              color: "#71717a",
+              display: "flex",
+            }}
+          >
+            Launching soon · 50% off first 500
           </div>
         </div>
       </div>
