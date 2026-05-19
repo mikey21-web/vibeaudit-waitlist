@@ -7,8 +7,6 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #08090A;
-  /* Prevent horizontal scroll from any rogue overflow */
-  overflow-x: hidden;
 }
 
 body {
@@ -19,11 +17,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Stop the page from rubber-banding past its boundaries on iOS / trackpads */
-  overscroll-behavior-y: none;
-  overflow-x: hidden;
-  /* Avoid layout shift when scrollbars appear */
-  scrollbar-gutter: stable;
+  /* Stop horizontal overflow only; never block vertical scroll */
+  overflow-x: clip;
 }
 
 /* Tap target hint — removes 300ms tap delay on touch devices */
