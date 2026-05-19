@@ -116,7 +116,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="border-b border-line/60">
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 md:py-32">
         <Reveal as="header" className="mx-auto max-w-2xl text-center">
           <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">
             Pricing · 50% off for first 500 waitlist members

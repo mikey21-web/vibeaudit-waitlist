@@ -11,7 +11,7 @@ const examples = [
 export function MCPSection() {
   return (
     <section id="mcp" className="border-b border-line/60">
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 md:py-32">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <Reveal as="header" className="lg:col-span-5">
             <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widemono text-accent">

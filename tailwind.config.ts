@@ -37,9 +37,9 @@ const config: Config = {
         widemono: "0.08em",
       },
       fontSize: {
-        "display": ["64px", { lineHeight: "1.05", letterSpacing: "-0.022em", fontWeight: "560" }],
-        "display-sm": ["44px", { lineHeight: "1.08", letterSpacing: "-0.022em", fontWeight: "560" }],
-        "h2": ["40px", { lineHeight: "1.12", letterSpacing: "-0.022em", fontWeight: "560" }],
+        "display": ["clamp(40px, 6vw, 64px)", { lineHeight: "1.05", letterSpacing: "-0.022em", fontWeight: "560" }],
+        "display-sm": ["clamp(32px, 5vw, 44px)", { lineHeight: "1.08", letterSpacing: "-0.022em", fontWeight: "560" }],
+        "h2": ["clamp(28px, 4vw, 40px)", { lineHeight: "1.15", letterSpacing: "-0.022em", fontWeight: "560" }],
       },
       animation: {
         "fade-up": "fadeUp 0.6s ease-out both",

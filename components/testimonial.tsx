@@ -5,7 +5,7 @@ import { Reveal } from "./reveal"
 export function Testimonial() {
   return (
     <section className="border-b border-line/60">
-      <div className="mx-auto max-w-3xl px-6 py-24 sm:py-28">
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24 md:py-28">
         <Reveal className="text-center">
           <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">
             Testimonial · one real human

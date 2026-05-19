@@ -91,7 +91,7 @@ function CellView({ cell }: { cell: Cell }) {
 export function Comparison() {
   return (
     <section id="vs" className="border-b border-line/60">
-      <div className="mx-auto max-w-5xl px-6 py-24 sm:py-28">
+      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 md:py-28">
         <Reveal as="header" className="mx-auto max-w-2xl text-center">
           <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">
             We replay. They list.
@@ -106,7 +106,7 @@ export function Comparison() {
         </Reveal>
 
         <Reveal delay={1} className="mt-12 overflow-hidden rounded-[14px] border border-line bg-surface/40">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto overscroll-x-contain">
             <table className="w-full min-w-[640px] border-collapse text-[14px]">
               <thead>
                 <tr className="border-b border-line bg-elevated/50">

@@ -46,7 +46,7 @@ export function AttackReplay() {
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-warn/40 to-transparent"
         aria-hidden
       />
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 md:py-32">
         <Reveal as="header" className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widemono text-warn">
             <span className="relative flex h-1.5 w-1.5">

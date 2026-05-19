@@ -163,7 +163,7 @@ export function HeroAttackTerminal() {
         </div>
 
         <pre
-          className="m-0 flex-1 overflow-x-auto p-4 font-mono text-[11px] leading-[1.7] transition-opacity sm:p-5 sm:text-[12.5px] sm:leading-[1.8]"
+          className="m-0 flex-1 overflow-x-auto overscroll-contain p-3.5 font-mono text-[10.5px] leading-[1.65] transition-opacity sm:p-5 sm:text-[12.5px] sm:leading-[1.8]"
           style={{
             opacity: visible ? 1 : 0,
             transitionDuration: `${FADE_MS}ms`,

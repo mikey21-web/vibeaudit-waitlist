@@ -39,7 +39,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <section id="flow" className="border-b border-line/60">
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 md:py-32">
         <Reveal as="header" className="max-w-2xl">
           <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">
             How it works

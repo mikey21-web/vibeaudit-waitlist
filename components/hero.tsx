@@ -22,12 +22,12 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-3xl px-6 pt-28 pb-24 sm:pt-36 sm:pb-32">
+      <div className="relative mx-auto max-w-3xl px-4 pt-20 pb-20 sm:px-6 sm:pt-28 sm:pb-24 md:pt-36 md:pb-32">
         <div className="reveal show flex justify-center">
           <LaunchCountdown variant="badge" />
         </div>
 
-        <h1 className="reveal reveal-d1 show mt-8 text-center text-[44px] font-medium leading-[1.04] tracking-tighter2 text-ink-primary sm:text-[68px]">
+        <h1 className="reveal reveal-d1 show mt-6 text-center text-[34px] font-medium leading-[1.05] tracking-tighter2 text-ink-primary sm:mt-8 sm:text-[44px] md:text-[60px] lg:text-[68px]">
           Ship vibe-coded apps
           <br />
           without the{" "}
@@ -38,13 +38,13 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="reveal reveal-d2 show mx-auto mt-6 max-w-xl text-center text-[16px] leading-[1.55] text-ink-secondary sm:text-[17px]">
+        <p className="reveal reveal-d2 show mx-auto mt-5 max-w-xl text-center text-[14.5px] leading-[1.55] text-ink-secondary sm:mt-6 sm:text-[16px] md:text-[17px]">
           DeploySafe scans, exploits, and fixes apps shipped from Claude Code, Cursor, Antigravity,
           Lovable, Bolt, and v0. We find the vulnerabilities, replay the exploits live so you see
           them happen, then write the fix prompts for you.
         </p>
 
-        <div className="reveal reveal-d3 show mx-auto mt-10 max-w-xl">
+        <div className="reveal reveal-d3 show mx-auto mt-8 max-w-xl sm:mt-10">
           {joined ? (
             <SuccessCard />
           ) : (

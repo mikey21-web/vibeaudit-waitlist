@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -45,6 +45,14 @@ export const metadata: Metadata = {
       "Production-readiness scanner for apps from Cursor, Claude Code, Lovable, Bolt, v0.",
   },
   robots: { index: true, follow: true },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#08090A",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

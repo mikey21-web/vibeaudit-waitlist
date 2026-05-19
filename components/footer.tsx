@@ -5,7 +5,7 @@ import { Logo } from "./logo"
 export function Footer() {
   return (
     <footer className="border-t border-line/60">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:flex-row sm:items-start sm:justify-between sm:px-6 sm:py-12">
         <div>
           <div className="flex items-center gap-2">
             <Logo size={22} wordmarkClassName="text-[13px] font-medium" />

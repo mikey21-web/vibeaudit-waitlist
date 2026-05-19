@@ -4,7 +4,11 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background: #08090A;
+  /* Prevent horizontal scroll from any rogue overflow */
+  overflow-x: hidden;
 }
 
 body {
@@ -15,6 +19,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Stop the page from rubber-banding past its boundaries on iOS / trackpads */
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+  /* Avoid layout shift when scrollbars appear */
+  scrollbar-gutter: stable;
+}
+
+/* Tap target hint — removes 300ms tap delay on touch devices */
+a, button, input, textarea, select {
+  touch-action: manipulation;
 }
 
 ::selection {
@@ -32,46 +46,75 @@ body {
   -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
 }
 
-/* drifting soft glow */
+/* drifting soft glow — gentle, slow drift to avoid distracting the viewer while scrolling */
 .accent-glow {
   background: radial-gradient(circle at center, rgba(94,106,210,0.28), transparent 60%);
   filter: blur(40px);
-  animation: drift 14s ease-in-out infinite alternate;
+  animation: drift 30s ease-in-out infinite alternate;
+  /* Promote to its own GPU layer so it doesn't repaint on every scroll frame */
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 .accent-glow-2 {
   background: radial-gradient(circle at center, rgba(94,106,210,0.18), transparent 60%);
   filter: blur(60px);
-  animation: drift2 18s ease-in-out infinite alternate;
+  animation: drift2 36s ease-in-out infinite alternate;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 @keyframes drift {
-  0%   { transform: translate(-50%, 0) scale(1); opacity: 0.7; }
-  100% { transform: translate(-46%, 24px) scale(1.08); opacity: 1; }
+  0%   { transform: translate3d(-50%, 0, 0) scale(1); opacity: 0.7; }
+  100% { transform: translate3d(-49%, 10px, 0) scale(1.03); opacity: 0.9; }
 }
 @keyframes drift2 {
-  0%   { transform: translate(-50%, 0) scale(1); }
-  100% { transform: translate(-54%, -30px) scale(1.12); }
+  0%   { transform: translate3d(-50%, 0, 0) scale(1); }
+  100% { transform: translate3d(-51%, -12px, 0) scale(1.04); }
 }
 
-/* reveal on view */
+/* On small screens, drop the heavy blurred glows to keep scrolling buttery */
+@media (max-width: 640px) {
+  .accent-glow,
+  .accent-glow-2 {
+    filter: blur(60px);
+    animation: none;
+    opacity: 0.6;
+  }
+  .hairline-grid {
+    background-size: 48px 48px;
+  }
+}
+
+/* reveal on view — subtle fade, minimal translate to avoid scroll-induced motion sickness */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  transform: translate3d(0, 6px, 0);
+  transition: opacity 0.35s ease-out,
+              transform 0.35s ease-out;
+  will-change: opacity;
 }
 .reveal.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
-.reveal-d1.show { transition-delay: 80ms; }
-.reveal-d2.show { transition-delay: 160ms; }
-.reveal-d3.show { transition-delay: 240ms; }
-.reveal-d4.show { transition-delay: 320ms; }
-.reveal-d5.show { transition-delay: 400ms; }
-.reveal-d6.show { transition-delay: 480ms; }
-.reveal-d7.show { transition-delay: 560ms; }
+.reveal-d1.show { transition-delay: 40ms; }
+.reveal-d2.show { transition-delay: 80ms; }
+.reveal-d3.show { transition-delay: 120ms; }
+.reveal-d4.show { transition-delay: 160ms; }
+.reveal-d5.show { transition-delay: 200ms; }
+.reveal-d6.show { transition-delay: 240ms; }
+.reveal-d7.show { transition-delay: 280ms; }
+
+/* On phones, kill the translate entirely — pure fade is silky on touch scrolling */
+@media (max-width: 640px) {
+  .reveal {
+    transform: none;
+    transition: opacity 0.3s ease-out;
+  }
+  .reveal.show {
+    transform: none;
+  }
+}
 
 /* rotating word slide */
 .word-slot {
