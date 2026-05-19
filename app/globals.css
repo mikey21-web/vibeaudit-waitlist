@@ -134,6 +134,53 @@ body {
   100% { box-shadow: 0 0 0 14px rgba(94,106,210,0); }
 }
 
+/* idle breathing glow on input bar */
+.input-breathe {
+  position: relative;
+}
+.input-breathe::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 0 0 rgba(94,106,210,0.0);
+  animation: inputBreathe 3.6s ease-in-out infinite;
+}
+.input-breathe:focus-within::after { animation: none; }
+@keyframes inputBreathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(94,106,210,0.0), 0 0 24px 0 rgba(94,106,210,0.0); }
+  50%      { box-shadow: 0 0 0 2px rgba(94,106,210,0.18), 0 0 28px 0 rgba(94,106,210,0.18); }
+}
+
+/* shimmer sweep across input bar */
+.input-shine {
+  position: relative;
+  overflow: hidden;
+}
+.input-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(94,106,210,0.22) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: inputShine 4.5s ease-in-out infinite;
+}
+@keyframes inputShine {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* placeholder fade for rotation */
+.placeholder-fade::placeholder {
+  transition: opacity 0.4s ease;
+}
+.placeholder-fade.placeholder-out::placeholder {
+  opacity: 0;
+}
+
 /* terminal line stagger */
 .term-line {
   opacity: 0;

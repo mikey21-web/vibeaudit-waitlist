@@ -1,18 +1,40 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
   onSuccess?: () => void
   size?: "md" | "lg"
 }
 
+const PLACEHOLDERS = [
+  "you@company.com",
+  "name@startup.io",
+  "dev@your-app.dev",
+  "founder@nextbig.ai",
+  "hello@yourproject.co",
+]
+
 export function WaitlistForm({ onSuccess, size = "lg" }: Props) {
   const [email, setEmail] = useState("")
   const [company, setCompany] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [phIdx, setPhIdx] = useState(0)
+  const [phFading, setPhFading] = useState(false)
   const isLg = size === "lg"
+
+  useEffect(() => {
+    if (email.length > 0) return
+    const tick = setInterval(() => {
+      setPhFading(true)
+      setTimeout(() => {
+        setPhIdx((i) => (i + 1) % PLACEHOLDERS.length)
+        setPhFading(false)
+      }, 400)
+    }, 2600)
+    return () => clearInterval(tick)
+  }, [email])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -56,7 +78,7 @@ export function WaitlistForm({ onSuccess, size = "lg" }: Props) {
         />
       </div>
       <div
-        className={`ring-pulse flex w-full items-stretch overflow-hidden rounded-[10px] border border-line bg-surface/90 backdrop-blur transition-colors focus-within:border-accent ${
+        className={`ring-pulse input-breathe input-shine flex w-full items-stretch overflow-hidden rounded-[10px] border border-line bg-surface/90 backdrop-blur transition-colors focus-within:border-accent ${
           isLg ? "h-14" : "h-11"
         }`}
       >
@@ -64,17 +86,17 @@ export function WaitlistForm({ onSuccess, size = "lg" }: Props) {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@company.com"
+          placeholder={PLACEHOLDERS[phIdx]}
           required
           autoComplete="email"
-          className={`flex-1 bg-transparent text-ink-primary placeholder:text-ink-tertiary focus:outline-none ${
+          className={`placeholder-fade ${phFading ? "placeholder-out" : ""} relative z-10 flex-1 bg-transparent text-ink-primary placeholder:text-ink-tertiary focus:outline-none ${
             isLg ? "px-5 text-[16px]" : "px-4 text-[14px]"
           }`}
         />
         <button
           type="submit"
           disabled={loading}
-          className={`btn-glow shrink-0 rounded-[8px] bg-ink-primary font-medium text-bg disabled:cursor-not-allowed disabled:opacity-60 ${
+          className={`btn-glow relative z-10 shrink-0 rounded-[8px] bg-ink-primary font-medium text-bg disabled:cursor-not-allowed disabled:opacity-60 ${
             isLg ? "m-1 px-6 text-[14px]" : "m-[3px] px-4 text-[13px]"
           }`}
         >
