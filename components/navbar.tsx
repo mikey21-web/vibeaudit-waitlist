@@ -4,7 +4,7 @@ import { Logo } from "./logo"
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line/60 bg-bg/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line/60 bg-bg/95 md:bg-bg/80 md:backdrop-blur-md">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <a href="/" className="flex items-center gap-2 text-ink-primary">
           <Logo size={22} />

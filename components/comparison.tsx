@@ -106,7 +106,7 @@ export function Comparison() {
         </Reveal>
 
         <Reveal delay={1} className="mt-12 overflow-hidden rounded-[14px] border border-line bg-surface/40">
-          <div className="overflow-x-auto overscroll-x-contain" data-lenis-prevent>
+          <div className="overflow-x-auto overscroll-x-contain">
             <table className="w-full min-w-[640px] border-collapse text-[14px]">
               <thead>
                 <tr className="border-b border-line bg-elevated/50">

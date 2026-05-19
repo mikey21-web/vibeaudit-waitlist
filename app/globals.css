@@ -19,6 +19,9 @@ body {
   text-rendering: optimizeLegibility;
   /* Stop horizontal overflow without breaking vertical scroll */
   overflow-x: clip;
+  /* Prevent the URL bar collapse from changing viewport mid-scroll on mobile.
+     This is THE fix for "page comes back up while scrolling" on phones. */
+  overscroll-behavior-y: none;
 }
 
 /* Tap target hint — removes 300ms tap delay on touch devices */
