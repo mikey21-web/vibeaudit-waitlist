@@ -7,7 +7,7 @@ export const contentType = "image/png"
 
 const MONO = "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
 
-async function loadFont(name: string, weight: number) {
+async function loadFont(name: string, weight: number): Promise<ArrayBuffer | null> {
   const res = await fetch(
     `https://fonts.googleapis.com/css2?family=${encodeURIComponent(
       name
@@ -19,11 +19,13 @@ async function loadFont(name: string, weight: number) {
       },
     }
   )
+  if (!res.ok) return null
   const css = await res.text()
   const url = css.match(/src:\s*url\(([^)]+)\)\s*format\('(?:opentype|truetype|woff2)'\)/)?.[1]
   if (!url) return null
   const fontRes = await fetch(url)
-  return new Uint8Array(await fontRes.arrayBuffer())
+  if (!fontRes.ok) return null
+  return fontRes.arrayBuffer()
 }
 
 export default async function OGImage() {
@@ -34,12 +36,12 @@ export default async function OGImage() {
     loadFont("JetBrains+Mono", 500),
   ])
 
-  const fonts = [
-    inter600 && { name: "Inter", data: inter600, weight: 600 as const, style: "normal" as const },
-    inter700 && { name: "Inter", data: inter700, weight: 700 as const, style: "normal" as const },
-    inter800 && { name: "Inter", data: inter800, weight: 800 as const, style: "normal" as const },
-    mono500 && { name: "JetBrains Mono", data: mono500, weight: 500 as const, style: "normal" as const },
-  ].filter(Boolean) as Array<{ name: string; data: Uint8Array; weight: 600 | 700 | 800 | 500; style: "normal" }>
+  type Font = { name: string; data: ArrayBuffer; weight: 600 | 700 | 800 | 500; style: "normal" }
+  const fonts: Font[] = []
+  if (inter600) fonts.push({ name: "Inter", data: inter600, weight: 600, style: "normal" })
+  if (inter700) fonts.push({ name: "Inter", data: inter700, weight: 700, style: "normal" })
+  if (inter800) fonts.push({ name: "Inter", data: inter800, weight: 800, style: "normal" })
+  if (mono500) fonts.push({ name: "JetBrains Mono", data: mono500, weight: 500, style: "normal" })
 
   const interFont = inter700 ? "Inter" : "system-ui"
   const monoFont = mono500 ? "JetBrains Mono" : MONO
