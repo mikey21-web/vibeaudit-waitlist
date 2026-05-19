@@ -16,8 +16,8 @@ export function Navbar() {
             ["#attack-replay", "Live attack"],
             ["#catch", "What we catch"],
             ["#flow", "How it works"],
-            ["#mcp", "MCP server"],
             ["#pricing", "Pricing"],
+            ["#faq", "FAQ"],
           ].map(([href, label]) => (
             <a
               key={href}
