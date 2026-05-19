@@ -26,25 +26,25 @@ export default async function OGImage() {
         <div
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
+            top: -200,
+            left: -150,
             width: 800,
             height: 600,
             display: "flex",
             background:
-              "radial-gradient(ellipse 600px 300px at 20% 10%, rgba(99,102,241,0.22), transparent 60%)",
+              "radial-gradient(circle at center, rgba(99,102,241,0.22), transparent 60%)",
           }}
         />
         <div
           style={{
             position: "absolute",
-            right: 0,
-            bottom: 0,
+            bottom: -150,
+            right: -150,
             width: 600,
             height: 400,
             display: "flex",
             background:
-              "radial-gradient(ellipse 500px 250px at 85% 90%, rgba(239,68,68,0.12), transparent 60%)",
+              "radial-gradient(circle at center, rgba(239,68,68,0.12), transparent 60%)",
           }}
         />
 
