@@ -75,7 +75,7 @@ export function HowItWorks() {
 function StepVisual({ kind }: { kind: "scan" | "score" | "prompt" }) {
   if (kind === "scan") {
     const lines: TermLine[] = [
-      { c: "text-ink-tertiary", t: "$ vibeaudit scan https://my-app.vercel.app", pause: 320 },
+      { c: "text-ink-tertiary", t: "$ deploysafe scan https://my-app.vercel.app", pause: 320 },
       { c: "text-ink-secondary", t: "→ Resolving DNS · OK", pause: 220 },
       { c: "text-ink-secondary", t: "→ Framework: Next.js 14 (App Router)", pause: 240 },
       { c: "text-ink-secondary", t: "→ Stack: Supabase · Stripe · OpenAI", pause: 280 },

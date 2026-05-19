@@ -12,8 +12,8 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
-const FROM = process.env.RESEND_FROM ?? "VibeAudit <onboarding@resend.dev>"
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vibeaudit.dev"
+const FROM = process.env.RESEND_FROM ?? "DeploySafe <hello@deploysafe.in>"
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://deploysafe.in"
 
 export async function POST(req: NextRequest) {
   try {
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: FROM,
       to: email,
-      subject: "You're on the VibeAudit waitlist 🎉",
+      subject: "You're on the DeploySafe waitlist 🎉",
       html: buildEmail({ name, siteUrl: SITE_URL }),
     })
 
@@ -88,7 +88,7 @@ function buildEmail({ name, siteUrl }: { name?: string; siteUrl: string }) {
                 <td style="background:linear-gradient(135deg,#1e3a8a,#6366f1);width:28px;height:28px;border-radius:6px;text-align:center;vertical-align:middle;">
                   <span style="color:#fff;font-size:14px;line-height:28px;">✦</span>
                 </td>
-                <td style="padding-left:10px;font-size:16px;font-weight:700;color:#0f172a;font-family:'Space Grotesk',sans-serif;">VibeAudit</td>
+                <td style="padding-left:10px;font-size:16px;font-weight:700;color:#0f172a;font-family:'Space Grotesk',sans-serif;">DeploySafe</td>
               </tr>
             </table>
           </td>
@@ -99,7 +99,7 @@ function buildEmail({ name, siteUrl }: { name?: string; siteUrl: string }) {
               You're on the waitlist 🎉
             </h1>
             <p style="margin:0 0 20px;font-size:15px;color:#64748b;line-height:1.6;">
-              ${greeting} thanks for signing up. We're putting the finishing touches on VibeAudit — the production-readiness scanner for apps built with Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0.
+              ${greeting} thanks for signing up. We're putting the finishing touches on DeploySafe — the production-readiness scanner for apps built with Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0.
             </p>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border:2px solid #e2e8f0;border-radius:10px;margin-bottom:24px;">
               <tr><td style="padding:20px 24px;">
@@ -122,14 +122,14 @@ function buildEmail({ name, siteUrl }: { name?: string; siteUrl: string }) {
               We'll email you the moment access opens. No spam, ever.
             </p>
             <a href="${siteUrl}" style="display:inline-block;background:linear-gradient(135deg,#1e3a8a,#6366f1);color:#fff;font-size:14px;font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none;font-family:'Space Grotesk',sans-serif;">
-              Visit VibeAudit →
+              Visit DeploySafe →
             </a>
           </td>
         </tr>
         <tr>
           <td style="padding:16px 32px;border-top:1px solid #e2e8f0;">
             <p style="margin:0;font-size:12px;color:#94a3b8;">
-              You're receiving this because you signed up at vibeaudit.dev. No more emails until we launch.
+              You're receiving this because you signed up at deploysafe.in. No more emails until we launch.
             </p>
           </td>
         </tr>

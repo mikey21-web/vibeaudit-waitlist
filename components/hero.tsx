@@ -46,7 +46,7 @@ export function Hero() {
         </h1>
 
         <p className="reveal reveal-d2 show mx-auto mt-6 max-w-xl text-center text-[16px] leading-[1.55] text-ink-secondary sm:text-[17px]">
-          VibeAudit scans apps shipped from Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0
+          DeploySafe scans apps shipped from Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0
           for exposed API keys, broken auth, and 100+ launch-blocking issues — then writes the fix
           prompts for you.
         </p>
@@ -108,7 +108,7 @@ function SuccessCard() {
 
 function TerminalPreview() {
   const lines: TermLine[] = [
-    { c: "text-ink-tertiary", t: "$ vibeaudit scan https://my-app.vercel.app", pause: 320 },
+    { c: "text-ink-tertiary", t: "$ deploysafe scan https://my-app.vercel.app", pause: 320 },
     { c: "text-ink-secondary", t: "→ Detecting framework: Next.js 14 + Supabase + Stripe", pause: 260 },
     { c: "text-ink-secondary", t: "→ Scanning JS bundles for secrets…", pause: 420 },
     { c: "text-warn", t: "  CRITICAL  Stripe secret key in client bundle", pause: 240 },

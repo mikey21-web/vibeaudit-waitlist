@@ -20,7 +20,7 @@ export function WaitlistHero() {
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-indigo-500">
             <span className="text-white text-sm font-bold">✦</span>
           </div>
-          <span className="text-sm font-semibold text-white tracking-tight">VibeAudit</span>
+          <span className="text-sm font-semibold text-white tracking-tight">DeploySafe</span>
         </div>
 
         {/* Eyebrow badge */}
@@ -42,7 +42,7 @@ export function WaitlistHero() {
 
         {/* Sub */}
         <p className="animate-fade-up delay-200 mt-5 text-base text-zinc-400 leading-relaxed sm:text-lg max-w-xl mx-auto">
-          VibeAudit scans apps built with Cursor, Lovable, Bolt, and v0 for exposed API keys,
+          DeploySafe scans apps built with Cursor, Lovable, Bolt, and v0 for exposed API keys,
           missing auth, broken payments, and 100+ other issues — then gives you paste-ready
           fix prompts for your AI coding tool.
         </p>

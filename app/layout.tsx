@@ -15,23 +15,23 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
 })
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vibeaudit.dev"
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://deploysafe.in"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "VibeAudit — Production scanner for vibe-coded apps",
+  title: "DeploySafe — Production scanner for vibe-coded apps",
   description:
     "Catch exposed API keys, broken auth, and 100+ launch-blocking issues in apps built with Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0. Join the waitlist.",
   openGraph: {
-    title: "VibeAudit — Production scanner for vibe-coded apps",
+    title: "DeploySafe — Production scanner for vibe-coded apps",
     description: "Join the waitlist for early access.",
     url: SITE_URL,
-    siteName: "VibeAudit",
+    siteName: "DeploySafe",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VibeAudit — Production scanner for vibe-coded apps",
+    title: "DeploySafe — Production scanner for vibe-coded apps",
     description: "Join the waitlist.",
   },
   robots: { index: true, follow: true },

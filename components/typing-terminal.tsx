@@ -26,7 +26,7 @@ interface State {
 }
 
 export function TypingTerminal({
-  title = "~/projects/my-app — vibeaudit",
+  title = "~/projects/my-app — deploysafe",
   lines,
   loop = true,
   restartDelay = 2400,
