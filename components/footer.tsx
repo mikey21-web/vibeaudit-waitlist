@@ -19,14 +19,11 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-12 gap-y-2 sm:grid-cols-2">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
           {[
             ["Privacy", "/privacy"],
             ["Terms", "/terms"],
             ["Contact", "mailto:hello@deploysafe.in"],
-            ["Status", "https://status.deploysafe.in"],
-            ["Security", "/security"],
-            ["Twitter", "https://twitter.com/deploysafe"],
           ].map(([label, href]) => (
             <a
               key={label}
