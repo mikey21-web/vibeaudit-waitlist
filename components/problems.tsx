@@ -4,6 +4,11 @@ import { Reveal } from "./reveal"
 
 const items = [
   {
+    cat: "Pentest",
+    title: "Active pentest probes",
+    desc: "We don't just check headers — we actually try the attacks. JWT bypass, webhook forgery, mass assignment, BOLA, IDOR.",
+  },
+  {
     cat: "Security",
     title: "Exposed API keys",
     desc: "Stripe secrets, OpenAI keys, and Supabase tokens shipped inside client bundles — readable from DevTools.",
@@ -19,6 +24,11 @@ const items = [
     desc: "Webhook handlers skipping signature checks — anyone can forge events and unlock paid features.",
   },
   {
+    cat: "Supply chain",
+    title: "Supply chain attacks",
+    desc: "Dependency confusion, typosquatting, compromised npm packages flagged before they ship to production.",
+  },
+  {
     cat: "AI cost",
     title: "Unbounded model calls",
     desc: "Public AI routes with no rate limits, no auth. One bored visitor drains $50/day in OpenAI usage.",
@@ -27,6 +37,11 @@ const items = [
     cat: "Infra",
     title: "Supabase tables wide open",
     desc: "Missing or permissive RLS policies — any signed-in user can read or mutate other users' rows.",
+  },
+  {
+    cat: "Compliance",
+    title: "Compliance gaps",
+    desc: "PCI-DSS, GDPR, SOC2, DPDP — find what blocks enterprise sales before legal does.",
   },
   {
     cat: "Legal",

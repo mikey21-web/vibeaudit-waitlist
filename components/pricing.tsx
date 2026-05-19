@@ -13,6 +13,8 @@ interface Feature {
 interface Tier {
   name: string
   tagline: string
+  isFree?: boolean
+  full?: number
   monthly: { price: number }
   annual: { price: number; billed: string }
   features: Feature[]
@@ -22,81 +24,74 @@ interface Tier {
 
 const tiers: Tier[] = [
   {
+    name: "Free",
+    tagline: "Try it once before you commit.",
+    isFree: true,
+    monthly: { price: 0 },
+    annual: { price: 0, billed: "Free forever" },
+    cta: "Start free at launch",
+    features: [
+      { text: "1 free scan per month" },
+      { text: "Vibe Score + severity counts" },
+      { text: "1 finding preview (others locked)" },
+      { text: "Email report" },
+    ],
+  },
+  {
     name: "Starter",
-    tagline: "Save hours every week",
+    tagline: "For solo makers shipping fast.",
+    full: 18,
     monthly: { price: 9 },
     annual: { price: 6, billed: "Billed $76/yr" },
-    cta: "Get Starter",
+    cta: "Lock in 50% off",
     features: [
       { text: "1 project" },
       { text: "30 scans/month" },
-      { text: "1 API key" },
-      { text: "17 scan categories" },
-      { text: "100+ security checks" },
-      { text: "Active pentest probes", tag: "NEW" },
+      { text: "All 17 categories unlocked" },
       { text: "AI fix prompts" },
+      { text: "Live attack replay" },
+      { text: "MCP server access" },
       { text: "PDF export" },
-      { text: "Live attack replay", tag: "NEW" },
-      { text: "MCP server support" },
-      { text: "API access" },
+      { text: "1 API key" },
     ],
   },
   {
     name: "Pro",
-    tagline: "Ship fast, stay secure",
+    tagline: "For growing projects.",
+    full: 38,
     monthly: { price: 19 },
     annual: { price: 13, billed: "Billed $160/yr" },
-    cta: "Get Pro",
+    cta: "Lock in 50% off",
     popular: true,
     features: [
       { text: "5 projects" },
       { text: "Unlimited scans" },
-      { text: "5 API keys" },
-      { text: "17 scan categories" },
-      { text: "100+ security checks" },
-      { text: "Active pentest probes", tag: "NEW" },
-      { text: "Supply chain analysis" },
-      { text: "Compliance gap checks" },
-      { text: "AI fix prompts" },
-      { text: "PDF export" },
-      { text: "Live attack replay", tag: "NEW" },
-      { text: "Trust badge (score 80+)" },
       { text: "Daily monitoring" },
-      { text: "Diff reports" },
+      { text: "Diff reports (what changed)" },
+      { text: "Trust badge (score 80+)" },
       { text: "Slack / Discord alerts" },
-      { text: "MCP server support" },
-      { text: "API access" },
+      { text: "Compliance gap analysis" },
+      { text: "Supply chain checks" },
       { text: "Priority support" },
+      { text: "5 API keys" },
     ],
   },
   {
     name: "Max",
-    tagline: "Security at scale",
+    tagline: "For teams and agencies.",
+    full: 78,
     monthly: { price: 39 },
     annual: { price: 27, billed: "Billed $328/yr" },
-    cta: "Get Max",
+    cta: "Lock in 50% off",
     features: [
       { text: "50 projects" },
       { text: "Unlimited scans" },
-      { text: "20 API keys" },
-      { text: "17 scan categories" },
-      { text: "100+ security checks" },
-      { text: "Active pentest probes", tag: "NEW" },
-      { text: "Supply chain analysis" },
-      { text: "Compliance gap checks" },
+      { text: "Custom monitoring schedules" },
+      { text: "Team workspace + SSO" },
       { text: "Breach monitoring" },
-      { text: "AI fix prompts" },
-      { text: "PDF export" },
-      { text: "Live attack replay", tag: "NEW" },
-      { text: "Trust badge (score 80+)" },
-      { text: "Custom monitoring" },
-      { text: "Diff reports" },
-      { text: "Slack / Discord alerts" },
-      { text: "Team workspace" },
       { text: "GitHub PR auto-fix", tag: "SOON" },
-      { text: "MCP server support" },
-      { text: "API access" },
       { text: "Dedicated support" },
+      { text: "20 API keys" },
     ],
   },
 ]
@@ -117,20 +112,21 @@ function TagPill({ tag }: { tag: NonNullable<Feature["tag"]> }) {
 }
 
 export function Pricing() {
-  const [period, setPeriod] = useState<Period>("annual")
+  const [period, setPeriod] = useState<Period>("monthly")
 
   return (
     <section id="pricing" className="border-b border-line/60">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal as="header" className="mx-auto max-w-2xl text-center">
           <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">
-            Pricing
+            Pricing · 50% off for first 500 waitlist members
           </div>
           <h2 className="mt-4 text-h2 text-ink-primary">
             Cheap insurance against shipping a leak.
           </h2>
           <p className="mt-4 text-[15px] leading-[1.6] text-ink-secondary">
             One missed API key in a client bundle costs more than a year of Pro.
+            Waitlist members lock 50% off — forever.
           </p>
         </Reveal>
 
@@ -178,17 +174,16 @@ export function Pricing() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {tiers.map((tier, i) => {
             const current = period === "annual" ? tier.annual : tier.monthly
-            const crossed = period === "annual" ? tier.monthly.price : null
             return (
               <Reveal
                 key={tier.name}
-                delay={(i + 1) as 1 | 2 | 3}
+                delay={((i % 3) + 1) as 1 | 2 | 3}
                 className={`relative flex flex-col rounded-[14px] border p-7 ${
                   tier.popular
-                    ? "border-accent/50 bg-gradient-to-b from-accent/[0.08] to-transparent shadow-[0_30px_80px_-30px_rgba(94,106,210,0.45)]"
+                    ? "border-accent/50 bg-gradient-to-b from-accent/[0.08] to-transparent shadow-[0_0_60px_-10px_rgba(99,102,241,0.25),0_30px_80px_-30px_rgba(94,106,210,0.45)]"
                     : "border-line bg-surface/40"
                 }`}
               >
@@ -201,40 +196,58 @@ export function Pricing() {
                 <h3 className="text-[20px] font-medium tracking-tightish text-ink-primary">
                   {tier.name}
                 </h3>
-                <p className="mt-1 text-[13px] text-ink-tertiary">{tier.tagline}</p>
+                <p className="mt-1 text-[13px] leading-[1.5] text-ink-tertiary">
+                  {tier.tagline}
+                </p>
 
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span
-                    key={`${tier.name}-${period}`}
-                    className="animate-fade-up text-[44px] font-medium leading-none tracking-tighter2 text-ink-primary"
-                  >
-                    ${current.price}
-                  </span>
-                  <span className="text-[13px] text-ink-tertiary">/mo</span>
+                <div className="mt-6">
+                  {tier.isFree ? (
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[44px] font-medium leading-none tracking-tighter2 text-ink-primary">
+                        $0
+                      </span>
+                      <span className="text-[13px] text-ink-tertiary">/forever</span>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex items-baseline gap-2">
+                        {tier.full && (
+                          <span className="text-[18px] text-ink-tertiary line-through decoration-ink-tertiary/40">
+                            ${tier.full}
+                          </span>
+                        )}
+                        <span
+                          key={`${tier.name}-${period}`}
+                          className="animate-fade-up text-[44px] font-medium leading-none tracking-tighter2 text-ink-primary"
+                        >
+                          ${current.price}
+                        </span>
+                        <span className="text-[13px] text-ink-tertiary">/mo</span>
+                      </div>
+                      <div className="mt-2 text-[11px] font-mono uppercase tracking-widemono text-accent">
+                        50% off — first 500 only
+                      </div>
+                    </>
+                  )}
                 </div>
 
-                <div className="mt-2 flex items-center gap-2 text-[12px] text-ink-tertiary">
-                  {crossed && (
-                    <span className="line-through decoration-ink-tertiary/40">
-                      ${crossed}
-                    </span>
-                  )}
-                  {period === "annual" ? (
-                    <span>{tier.annual.billed}</span>
-                  ) : (
-                    <span>Billed monthly</span>
-                  )}
+                <div className="mt-2 text-[12px] text-ink-tertiary">
+                  {tier.isFree
+                    ? "No card. No expiry."
+                    : period === "annual"
+                    ? tier.annual.billed
+                    : "Billed monthly"}
                 </div>
 
                 <a
                   href="#waitlist"
-                  className={`mt-7 inline-flex h-11 items-center justify-center rounded-full text-[13px] font-medium transition-colors ${
+                  className={`mt-6 inline-flex h-11 items-center justify-center rounded-full text-[13px] font-medium transition-colors ${
                     tier.popular
                       ? "btn-glow bg-ink-primary text-bg"
                       : "border border-line bg-surface/60 text-ink-primary hover:border-accent/40 hover:bg-surface"
                   }`}
                 >
-                  {tier.cta}
+                  {tier.cta} →
                 </a>
 
                 <ul className="mt-7 space-y-3 border-t border-line pt-6">

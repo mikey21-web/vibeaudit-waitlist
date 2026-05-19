@@ -19,20 +19,30 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://deploysafe.in"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "DeploySafe — Production scanner for vibe-coded apps",
+  title: "DeploySafe — Production-readiness scanner for vibe-coded apps",
   description:
-    "Catch exposed API keys, broken auth, and 100+ launch-blocking issues in apps built with Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0. Join the waitlist.",
+    "Scan apps shipped from Cursor, Claude Code, Lovable, Bolt, v0. We find vulnerabilities, replay the attacks live, and write the fix prompts. Free scan, paid fixes.",
+  keywords: [
+    "vibe coding security",
+    "ai code audit",
+    "claude code scanner",
+    "cursor security",
+    "supabase rls audit",
+    "stripe webhook security",
+  ],
   openGraph: {
-    title: "DeploySafe — Production scanner for vibe-coded apps",
-    description: "Join the waitlist for early access.",
+    title: "DeploySafe — Production-readiness scanner for vibe-coded apps",
+    description:
+      "We don't just tell you you're vulnerable. We hack you, then we patch you. Join the waitlist for early access.",
     url: SITE_URL,
     siteName: "DeploySafe",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DeploySafe — Production scanner for vibe-coded apps",
-    description: "Join the waitlist.",
+    title: "DeploySafe — We hack you, then we patch you.",
+    description:
+      "Production-readiness scanner for apps from Cursor, Claude Code, Lovable, Bolt, v0.",
   },
   robots: { index: true, follow: true },
 }

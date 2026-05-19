@@ -15,16 +15,23 @@ const steps = [
   },
   {
     num: "02",
-    eyebrow: "Score",
-    title: "Get a Vibe Score in 30 seconds.",
-    desc: "11 categories, 100+ checks. Each finding is severity-tagged and linked to the exact file or route it lives in.",
-    visual: "score" as const,
+    eyebrow: "Exploit",
+    title: "Replay the attack live.",
+    desc: "See the exact HTTP request that breaks your app. No theoretical CVEs — a real curl that succeeds, or it doesn't ship as a finding.",
+    visual: "exploit" as const,
   },
   {
     num: "03",
+    eyebrow: "Score",
+    title: "Get a Vibe Score in 30 seconds.",
+    desc: "17 categories, 100+ checks. Each finding is severity-tagged and linked to the exact file or route it lives in.",
+    visual: "score" as const,
+  },
+  {
+    num: "04",
     eyebrow: "Fix",
-    title: "Paste the prompts into Cursor.",
-    desc: "Every finding ships with a paste-ready fix for Cursor, Windsurf, and Copilot. Drop it in. Re-scan. Done.",
+    title: "Paste prompts into Cursor.",
+    desc: "Every finding has a paste-ready prompt for Cursor, Claude Code, Windsurf. Or use the MCP server and skip the copy-paste entirely.",
     visual: "prompt" as const,
   },
 ]
@@ -72,7 +79,7 @@ export function HowItWorks() {
   )
 }
 
-function StepVisual({ kind }: { kind: "scan" | "score" | "prompt" }) {
+function StepVisual({ kind }: { kind: "scan" | "exploit" | "score" | "prompt" }) {
   if (kind === "scan") {
     const lines: TermLine[] = [
       { c: "text-ink-tertiary", t: "$ deploysafe scan https://my-app.vercel.app", pause: 320 },
@@ -84,6 +91,18 @@ function StepVisual({ kind }: { kind: "scan" | "score" | "prompt" }) {
       { c: "text-success", t: "✓ Surface mapped in 6.4s", pause: 900 },
     ]
     return <TypingTerminal title="scan" lines={lines} loop restartDelay={3200} shadow={false} />
+  }
+
+  if (kind === "exploit") {
+    const lines: TermLine[] = [
+      { c: "text-ink-tertiary", t: "$ deploysafe replay critical-1", pause: 280 },
+      { c: "text-ink-secondary", t: "→ Crafting POST /api/webhooks/stripe", pause: 260 },
+      { c: "text-ink-secondary", t: "→ Body: forged checkout.session.completed", pause: 280 },
+      { c: "text-ink-secondary", t: "→ Header: stripe-signature: <missing>", pause: 240 },
+      { c: "text-success", t: "← HTTP 200 OK", pause: 240 },
+      { c: "text-warn", t: "🚨 Forged event accepted — plan upgraded without payment.", pause: 800 },
+    ]
+    return <TypingTerminal title="exploit" lines={lines} loop restartDelay={3000} shadow={false} />
   }
 
   if (kind === "score") {

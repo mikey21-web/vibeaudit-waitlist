@@ -40,15 +40,15 @@ export function Hero() {
           without the{" "}
           <span className="text-accent">
             <RotatingWord
-              words={["leaks.", "bugs.", "lawsuits.", "downtime.", "regrets."]}
+              words={["breach.", "bypass.", "leak.", "exploit.", "lawsuit."]}
             />
           </span>
         </h1>
 
         <p className="reveal reveal-d2 show mx-auto mt-6 max-w-xl text-center text-[16px] leading-[1.55] text-ink-secondary sm:text-[17px]">
-          DeploySafe scans apps shipped from Claude Code, Cursor, Antigravity, Lovable, Bolt, and v0
-          for exposed API keys, broken auth, and 100+ launch-blocking issues — then writes the fix
-          prompts for you.
+          DeploySafe scans, exploits, and fixes apps shipped from Claude Code, Cursor, Antigravity,
+          Lovable, Bolt, and v0. We find the vulnerabilities, replay the exploits live so you see
+          them happen, then write the fix prompts for you.
         </p>
 
         <div className="reveal reveal-d3 show mx-auto mt-10 max-w-xl">
@@ -68,9 +68,12 @@ export function Hero() {
           <LiveTicker />
         </div>
 
-        <div className="reveal reveal-d5 show mt-4 flex items-center justify-center gap-6 text-[11px] text-ink-tertiary">
+        <div className="reveal reveal-d5 show mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-ink-tertiary">
           <span className="flex items-center gap-1.5">
             <span className="h-1 w-1 rounded-full bg-success" /> 30s scan
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="h-1 w-1 rounded-full bg-success" /> 17 categories
           </span>
           <span className="flex items-center gap-1.5">
             <span className="h-1 w-1 rounded-full bg-success" /> 100+ checks
@@ -108,19 +111,21 @@ function SuccessCard() {
 
 function TerminalPreview() {
   const lines: TermLine[] = [
-    { c: "text-ink-tertiary", t: "$ deploysafe scan https://my-app.vercel.app", pause: 320 },
-    { c: "text-ink-secondary", t: "→ Detecting framework: Next.js 14 + Supabase + Stripe", pause: 260 },
-    { c: "text-ink-secondary", t: "→ Scanning JS bundles for secrets…", pause: 420 },
-    { c: "text-warn", t: "  CRITICAL  Stripe secret key in client bundle", pause: 240 },
-    { c: "text-[#E2B341]", t: "  HIGH      No Content-Security-Policy header", pause: 220 },
-    { c: "text-ink-secondary", t: "  MEDIUM    Missing OG meta tags (3 pages)", pause: 220 },
-    { c: "text-success", t: "  PASS      HTTPS enforced", pause: 320 },
-    { c: "text-ink-primary", t: "  Score 42 / 100 · 1 critical · 4 high · 7 medium", pause: 360 },
-    { c: "text-accent", t: "✓ Fix prompts ready. Paste into Cursor.", pause: 800 },
+    { c: "text-ink-tertiary", t: "$ deploysafe scan https://my-app.vercel.app", pause: 280 },
+    { c: "text-ink-secondary", t: "→ Detecting framework: Next.js 14 + Supabase + Stripe", pause: 240 },
+    { c: "text-ink-secondary", t: "→ Scanning JS bundles for secrets…", pause: 320 },
+    { c: "text-ink-secondary", t: "→ Running active pentest probes…", pause: 420 },
+    { c: "text-warn", t: "  CRITICAL  Stripe webhook signature missing", pause: 280 },
+    { c: "text-warn", t: "  [Replay Attack ▶]", pause: 360 },
+    { c: "text-ink-tertiary", t: "  → POST /api/webhooks/stripe", pause: 200 },
+    { c: "text-ink-tertiary", t: "  → Body: { type: \"checkout.session.completed\", … }", pause: 200 },
+    { c: "text-success", t: "  ← HTTP 200 OK", pause: 240 },
+    { c: "text-warn", t: "  🚨 Forged event accepted — paid plan unlocked.", pause: 480 },
+    { c: "text-accent", t: "✓ Fix prompt ready. Paste into Cursor.", pause: 800 },
   ]
   return (
     <div className="reveal reveal-d6 show">
-      <TypingTerminal lines={lines} loop restartDelay={3200} />
+      <TypingTerminal lines={lines} loop restartDelay={2800} />
     </div>
   )
 }

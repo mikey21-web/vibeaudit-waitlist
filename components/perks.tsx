@@ -4,12 +4,12 @@ import { Reveal } from "./reveal"
 import { AnimatedCount } from "./animated-count"
 
 const perks = [
-  { k: "01", t: "Early access", d: "Before the public launch." },
-  { k: "02", t: "50% off forever", d: "Locked in for first 500 members." },
-  { k: "03", t: "Free deep scan", d: "One on day one, on us." },
-  { k: "04", t: "Founding badge", d: "Shown on every report you ship." },
-  { k: "05", t: "Direct founder line", d: "Reply-all email, not a ticket queue." },
-  { k: "06", t: "Roadmap vote", d: "Pick what we build next." },
+  { k: "01", t: "Early access", d: "First 500 get keys before the public launch." },
+  { k: "02", t: "50% off forever", d: "Locked in. Same price even when we raise rates." },
+  { k: "03", t: "Free deep scan", d: "One full audit on day one, on us. Normally $19." },
+  { k: "04", t: "Live attack demo", d: "Personal walkthrough on a Zoom call if you want one." },
+  { k: "05", t: "Founding badge", d: "\"DeploySafe Founder\" badge on every report you ship." },
+  { k: "06", t: "Roadmap vote", d: "Pick what we build next. We actually listen." },
 ]
 
 export function Perks() {
