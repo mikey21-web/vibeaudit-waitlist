@@ -105,16 +105,6 @@ export default async function OGImage() {
               "radial-gradient(circle at center, rgba(239,68,68,0.18), transparent 60%)",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
-          }}
-        />
 
         <div
           style={{
