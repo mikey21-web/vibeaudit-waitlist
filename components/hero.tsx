@@ -14,11 +14,11 @@ export function Hero() {
     <section id="waitlist" className="relative overflow-hidden border-b border-line/60">
       <div className="absolute inset-0 hairline-grid" aria-hidden />
       <div
-        className="pointer-events-none absolute left-1/2 top-[-40px] h-[460px] w-[860px] accent-glow"
+        className="pointer-events-none absolute left-1/2 top-[-40px] h-[460px] w-[860px] max-w-[100vw] -translate-x-1/2 accent-glow"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-[280px] h-[520px] w-[1000px] accent-glow-2"
+        className="pointer-events-none absolute left-1/2 top-[280px] h-[520px] w-[1000px] max-w-[100vw] -translate-x-1/2 accent-glow-2"
         aria-hidden
       />
 

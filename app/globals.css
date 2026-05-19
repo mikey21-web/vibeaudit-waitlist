@@ -7,6 +7,9 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #08090A;
+  /* Prevent rogue absolute children from forcing horizontal scroll on iOS */
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -19,8 +22,9 @@ body {
   text-rendering: optimizeLegibility;
   /* Stop horizontal overflow without breaking vertical scroll */
   overflow-x: clip;
-  /* Prevent the URL bar collapse from changing viewport mid-scroll on mobile.
-     This is THE fix for "page comes back up while scrolling" on phones. */
+  max-width: 100%;
+  /* Reduce the rubber-band scroll bounce on iOS that compounds the
+     URL-bar-collapse "page jumps up" feeling */
   overscroll-behavior-y: none;
 }
 
@@ -44,16 +48,15 @@ a, button, input, textarea, select {
   -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
 }
 
-/* drifting soft glow — STATIC. No infinite vertical motion that fights scroll direction. */
+/* drifting soft glow — STATIC. No infinite vertical motion that fights scroll direction.
+   Centering is done at the element level (-translate-x-1/2) so we don't override it here. */
 .accent-glow {
   background: radial-gradient(circle at center, rgba(94,106,210,0.28), transparent 60%);
   filter: blur(40px);
-  transform: translateX(-50%);
 }
 .accent-glow-2 {
   background: radial-gradient(circle at center, rgba(94,106,210,0.18), transparent 60%);
   filter: blur(60px);
-  transform: translateX(-50%);
 }
 
 /* On small screens, lighter blur for perf */
