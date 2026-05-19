@@ -1,15 +1,14 @@
 "use client"
 
+import { Logo } from "./logo"
+
 export function Footer() {
   return (
     <footer className="border-t border-line/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-5 w-5 place-items-center rounded-[5px] bg-ink-primary text-[11px] font-semibold text-bg">
-              D
-            </span>
-            <span className="text-[13px] font-medium text-ink-primary">DeploySafe</span>
+            <Logo size={22} wordmarkClassName="text-[13px] font-medium" />
             <span className="ml-2 text-[12px] text-ink-tertiary">
               © {new Date().getFullYear()}
             </span>
