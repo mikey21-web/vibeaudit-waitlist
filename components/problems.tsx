@@ -48,6 +48,11 @@ const items = [
     title: "No privacy policy",
     desc: "Missing privacy, terms, cookie banner — blocks Stripe verification and breaks GDPR/DPDP.",
   },
+  {
+    cat: "SEO",
+    title: "Invisible at launch",
+    desc: "Missing meta description, broken OG image, no canonical URLs, no sitemap. Ships day one, never ranks.",
+  },
 ]
 
 export function Problems() {

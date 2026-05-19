@@ -179,16 +179,16 @@ export function Pricing() {
             const current = period === "annual" ? tier.annual : tier.monthly
             return (
               <Reveal
-                key={tier.name}
+                key={`${tier.name}-${period}`}
                 delay={((i % 3) + 1) as 1 | 2 | 3}
-                className={`relative flex flex-col rounded-[14px] border p-7 ${
+                className={`pricing-card group relative flex flex-col rounded-[14px] border p-7 ${
                   tier.popular
-                    ? "border-accent/50 bg-gradient-to-b from-accent/[0.08] to-transparent shadow-[0_0_60px_-10px_rgba(99,102,241,0.25),0_30px_80px_-30px_rgba(94,106,210,0.45)]"
+                    ? "pricing-card-popular border-accent/50 bg-gradient-to-b from-accent/[0.08] to-transparent shadow-[0_0_60px_-10px_rgba(99,102,241,0.25),0_30px_80px_-30px_rgba(94,106,210,0.45)]"
                     : "border-line bg-surface/40"
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-accent/40 bg-bg px-3 py-1 font-mono text-[10px] uppercase tracking-widemono text-accent">
+                  <div className="badge-pop absolute -top-3 left-1/2 rounded-full border border-accent/40 bg-bg px-3 py-1 font-mono text-[10px] uppercase tracking-widemono text-accent">
                     Most popular
                   </div>
                 )}
@@ -218,7 +218,7 @@ export function Pricing() {
                         )}
                         <span
                           key={`${tier.name}-${period}`}
-                          className="animate-fade-up text-[44px] font-medium leading-none tracking-tighter2 text-ink-primary"
+                          className="price-spring text-[44px] font-medium leading-none tracking-tighter2 text-ink-primary"
                         >
                           ${current.price}
                         </span>
@@ -243,7 +243,7 @@ export function Pricing() {
                   href="#waitlist"
                   className={`mt-6 inline-flex h-11 items-center justify-center rounded-full text-[13px] font-medium transition-colors ${
                     tier.popular
-                      ? "btn-glow bg-ink-primary text-bg"
+                      ? "btn-glow cta-shimmer bg-ink-primary text-bg"
                       : "border border-line bg-surface/60 text-ink-primary hover:border-accent/40 hover:bg-surface"
                   }`}
                 >
@@ -251,12 +251,13 @@ export function Pricing() {
                 </a>
 
                 <ul className="mt-7 space-y-3 border-t border-line pt-6">
-                  {tier.features.map((f) => (
+                  {tier.features.map((f, fIdx) => (
                     <li
                       key={f.text}
-                      className="flex items-start gap-2.5 text-[13.5px] leading-[1.5] text-ink-secondary"
+                      className="feature-row flex items-start gap-2.5 text-[13.5px] leading-[1.5] text-ink-secondary"
+                      style={{ animationDelay: `${120 + fIdx * 50}ms` }}
                     >
-                      <span className="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-accent/15 text-[10px] text-accent">
+                      <span className="mt-[3px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-accent/15 text-[10px] text-accent transition-all duration-200 group-hover:bg-accent/25 group-hover:text-accent">
                         ✓
                       </span>
                       <span>

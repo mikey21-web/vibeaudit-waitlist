@@ -181,6 +181,123 @@ body {
   opacity: 0;
 }
 
+/* pricing card hover + lift */
+.pricing-card {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+  will-change: transform;
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(94, 106, 210, 0.45);
+  box-shadow: 0 30px 80px -30px rgba(94, 106, 210, 0.45),
+              0 0 0 1px rgba(94, 106, 210, 0.15);
+}
+
+/* animated gradient border on pricing card hover */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(94, 106, 210, 0.45) 90deg,
+    transparent 180deg,
+    rgba(113, 112, 255, 0.35) 270deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  filter: blur(2px);
+  animation: cardSpin 6s linear infinite;
+}
+.pricing-card:hover::before { opacity: 0.7; }
+
+@keyframes cardSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* always-on glow for the popular pricing card */
+.pricing-card-popular::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(94, 106, 210, 0.35),
+    transparent 40%,
+    transparent 60%,
+    rgba(113, 112, 255, 0.35)
+  );
+  opacity: 0;
+  z-index: -1;
+  animation: popularBreathe 4s ease-in-out infinite;
+  filter: blur(8px);
+}
+@keyframes popularBreathe {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 0.6; }
+}
+
+/* price spring-in on toggle */
+.price-spring {
+  animation: priceSpring 0.5s cubic-bezier(0.22, 1.4, 0.36, 1) both;
+}
+@keyframes priceSpring {
+  0%   { opacity: 0; transform: translateY(12px) scale(0.9); }
+  60%  { opacity: 1; transform: translateY(-2px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* feature row reveal stagger on card mount */
+.feature-row {
+  opacity: 0;
+  transform: translateX(-4px);
+  animation: featureIn 0.4s ease-out forwards;
+}
+@keyframes featureIn {
+  0%   { opacity: 0; transform: translateX(-4px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* shimmering CTA on popular card */
+.cta-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.cta-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: ctaShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes ctaShimmer {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* most popular badge bounce */
+.badge-pop {
+  animation: badgePop 4s ease-in-out infinite;
+}
+@keyframes badgePop {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, -3px); }
+}
+
 /* terminal line stagger */
 .term-line {
   opacity: 0;
