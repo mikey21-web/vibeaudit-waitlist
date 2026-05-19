@@ -140,21 +140,13 @@ export function HeroAttackTerminal() {
   const attack = attacks[attackIdx]
 
   return (
-    <div className="relative">
-      <div className="mb-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widemono text-warn">
-        <span className="relative flex h-1.5 w-1.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-warn opacity-75" />
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-warn" />
-        </span>
-        Live attack replay · industry first
-      </div>
-
+    <div className="relative h-full w-full">
       <div
         className="pointer-events-none absolute -inset-4 rounded-[24px] bg-warn/10 blur-2xl"
         aria-hidden
       />
 
-      <div className="relative overflow-hidden rounded-[12px] border border-warn/20 bg-surface shadow-[0_40px_120px_-30px_rgba(235,87,87,0.35)]">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-[12px] border border-warn/20 bg-surface shadow-[0_40px_120px_-30px_rgba(235,87,87,0.35)]">
         <div className="flex items-center justify-between border-b border-line bg-elevated px-4 py-2.5">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-[#EB5757]" />
@@ -171,10 +163,11 @@ export function HeroAttackTerminal() {
         </div>
 
         <pre
-          className="m-0 min-h-[280px] p-5 font-mono text-[12.5px] leading-[1.8] transition-opacity"
+          className="m-0 flex-1 p-5 font-mono text-[12.5px] leading-[1.8] transition-opacity"
           style={{
             opacity: visible ? 1 : 0,
             transitionDuration: `${FADE_MS}ms`,
+            minHeight: "440px",
           }}
         >
           {rendered.map((l, i) => (
@@ -195,13 +188,6 @@ export function HeroAttackTerminal() {
           )}
         </pre>
       </div>
-
-      <a
-        href="#waitlist"
-        className="btn-glow mt-5 inline-flex h-11 items-center rounded-[8px] bg-ink-primary px-5 text-[13px] font-medium text-bg"
-      >
-        Replay this attack on YOUR app →
-      </a>
     </div>
   )
 }
