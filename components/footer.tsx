@@ -16,10 +16,9 @@ export function Footer() {
 
         <div className="flex items-center gap-6">
           {[
-            ["Privacy", "#"],
-            ["Terms", "#"],
+            ["Privacy", "/privacy"],
+            ["Terms", "/terms"],
             ["Contact", "mailto:hello@deploysafe.in"],
-            ["X", "#"],
           ].map(([label, href]) => (
             <a
               key={label}
