@@ -14,7 +14,7 @@ const perks = [
 
 export function Perks() {
   return (
-    <section id="pricing" className="border-b border-line/60">
+    <section id="perks" className="border-b border-line/60">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal as="header" className="max-w-2xl">
           <div className="font-mono text-[11px] uppercase tracking-widemono text-accent">

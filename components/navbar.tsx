@@ -13,10 +13,10 @@ export function Navbar() {
 
         <div className="hidden items-center gap-7 md:flex">
           {[
-            ["#scan", "Scan"],
             ["#catch", "What we catch"],
-            ["#flow", "Flow"],
+            ["#flow", "How it works"],
             ["#pricing", "Pricing"],
+            ["#perks", "Perks"],
           ].map(([href, label]) => (
             <a
               key={href}
