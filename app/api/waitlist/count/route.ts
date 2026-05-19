@@ -4,7 +4,7 @@ import { Resend } from "resend"
 export const dynamic = "force-dynamic"
 export const revalidate = 0
 
-const BASELINE = 2400
+const BASELINE = 0
 
 function relativeTime(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime()
@@ -19,9 +19,7 @@ function relativeTime(iso: string): string {
 }
 
 function fakeCount(): number {
-  const epoch = new Date("2026-05-19T00:00:00Z").getTime()
-  const minutes = Math.max(0, Math.floor((Date.now() - epoch) / 60000))
-  return BASELINE + minutes
+  return BASELINE
 }
 
 export async function GET() {

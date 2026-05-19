@@ -16,6 +16,7 @@ export function Navbar() {
             ["#attack-replay", "Live attack"],
             ["#catch", "What we catch"],
             ["#flow", "How it works"],
+            ["#vs", "vs Snyk"],
             ["#pricing", "Pricing"],
             ["#faq", "FAQ"],
           ].map(([href, label]) => (

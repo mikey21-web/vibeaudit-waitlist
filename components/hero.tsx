@@ -53,6 +53,9 @@ export function Hero() {
               <p className="mt-3 text-center text-[12px] text-ink-tertiary">
                 No spam. One email when access opens.
               </p>
+              <p className="mt-4 text-center text-[12.5px] italic leading-[1.55] text-ink-tertiary">
+                Built by Uday after watching 4 friends ship Stripe secrets in 2 weeks.
+              </p>
             </>
           )}
         </div>

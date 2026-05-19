@@ -1,26 +1,47 @@
+import dynamic from "next/dynamic"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
-import { FeaturedIn } from "@/components/featured-in"
 import { AttackReplay } from "@/components/attack-replay"
 import { Problems } from "@/components/problems"
 import { HowItWorks } from "@/components/how-it-works"
-import { Testimonial } from "@/components/testimonial"
-import { MCPSection } from "@/components/mcp-section"
-import { Pricing } from "@/components/pricing"
-import { Perks } from "@/components/perks"
-import { FAQ } from "@/components/faq"
-import { Footer } from "@/components/footer"
-import { TrustBar } from "@/components/trust-bar"
+
+const Comparison = dynamic(() =>
+  import("@/components/comparison").then((m) => m.Comparison)
+)
+const Testimonial = dynamic(() =>
+  import("@/components/testimonial").then((m) => m.Testimonial)
+)
+const MCPSection = dynamic(() =>
+  import("@/components/mcp-section").then((m) => m.MCPSection)
+)
+const Pricing = dynamic(() =>
+  import("@/components/pricing").then((m) => m.Pricing)
+)
+const Perks = dynamic(() =>
+  import("@/components/perks").then((m) => m.Perks)
+)
+const FAQ = dynamic(() => import("@/components/faq").then((m) => m.FAQ))
+const Footer = dynamic(() =>
+  import("@/components/footer").then((m) => m.Footer)
+)
+const TrustBar = dynamic(
+  () => import("@/components/trust-bar").then((m) => m.TrustBar),
+  { ssr: false }
+)
+const ExitIntent = dynamic(
+  () => import("@/components/exit-intent").then((m) => m.ExitIntent),
+  { ssr: false }
+)
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-bg text-ink-primary">
       <Navbar />
       <Hero />
-      <FeaturedIn />
       <AttackReplay />
       <Problems />
       <HowItWorks />
+      <Comparison />
       <Testimonial />
       <MCPSection />
       <Pricing />
@@ -28,6 +49,7 @@ export default function Home() {
       <FAQ />
       <Footer />
       <TrustBar />
+      <ExitIntent />
     </main>
   )
 }
