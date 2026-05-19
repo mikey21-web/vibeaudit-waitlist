@@ -3,26 +3,10 @@
 @tailwind utilities;
 
 html {
-  /* Lenis manages smooth scrolling itself; native smooth fights it */
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #08090A;
-}
-
-/* Lenis sets these automatically when active, but we set sensible defaults */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: clip;
 }
 
 body {
@@ -57,38 +41,23 @@ a, button, input, textarea, select {
   -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
 }
 
-/* drifting soft glow — gentle, slow drift to avoid distracting the viewer while scrolling */
+/* drifting soft glow — STATIC. No infinite vertical motion that fights scroll direction. */
 .accent-glow {
   background: radial-gradient(circle at center, rgba(94,106,210,0.28), transparent 60%);
   filter: blur(40px);
-  animation: drift 30s ease-in-out infinite alternate;
-  /* Promote to its own GPU layer so it doesn't repaint on every scroll frame */
-  transform: translateZ(0);
-  will-change: transform, opacity;
+  transform: translateX(-50%);
 }
 .accent-glow-2 {
   background: radial-gradient(circle at center, rgba(94,106,210,0.18), transparent 60%);
   filter: blur(60px);
-  animation: drift2 36s ease-in-out infinite alternate;
-  transform: translateZ(0);
-  will-change: transform;
+  transform: translateX(-50%);
 }
 
-@keyframes drift {
-  0%   { transform: translate3d(-50%, 0, 0) scale(1); opacity: 0.7; }
-  100% { transform: translate3d(-49%, 10px, 0) scale(1.03); opacity: 0.9; }
-}
-@keyframes drift2 {
-  0%   { transform: translate3d(-50%, 0, 0) scale(1); }
-  100% { transform: translate3d(-51%, -12px, 0) scale(1.04); }
-}
-
-/* On small screens, drop the heavy blurred glows to keep scrolling buttery */
+/* On small screens, lighter blur for perf */
 @media (max-width: 640px) {
   .accent-glow,
   .accent-glow-2 {
     filter: blur(60px);
-    animation: none;
     opacity: 0.6;
   }
   .hairline-grid {
@@ -96,33 +65,25 @@ a, button, input, textarea, select {
   }
 }
 
-/* reveal on view — works smoothly with Lenis interpolated scrolling */
+/* reveal on view — pure opacity fade, no translation
+   Why no transform: an upward translateY animation triggers while the user
+   is scrolling down, creating an opposing motion vector. The brain reads
+   this as the page "coming back up." Pure opacity has no spatial component,
+   so it never conflicts with scroll direction. */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 14px, 0);
-  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+  transition: opacity 0.5s ease-out;
 }
 .reveal.show {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
 }
-.reveal-d1.show { transition-delay: 60ms; }
-.reveal-d2.show { transition-delay: 120ms; }
-.reveal-d3.show { transition-delay: 180ms; }
-.reveal-d4.show { transition-delay: 240ms; }
-.reveal-d5.show { transition-delay: 300ms; }
-.reveal-d6.show { transition-delay: 360ms; }
-.reveal-d7.show { transition-delay: 420ms; }
-
-/* On phones, smaller translate so native momentum scroll stays buttery */
-@media (max-width: 640px) {
-  .reveal {
-    transform: translate3d(0, 8px, 0);
-    transition-duration: 0.4s;
-  }
-}
+.reveal-d1.show { transition-delay: 50ms; }
+.reveal-d2.show { transition-delay: 100ms; }
+.reveal-d3.show { transition-delay: 150ms; }
+.reveal-d4.show { transition-delay: 200ms; }
+.reveal-d5.show { transition-delay: 250ms; }
+.reveal-d6.show { transition-delay: 300ms; }
+.reveal-d7.show { transition-delay: 350ms; }
 
 /* rotating word slide */
 .word-slot {
@@ -340,13 +301,9 @@ a, button, input, textarea, select {
   100% { transform: translateX(100%); }
 }
 
-/* most popular badge bounce */
+/* most popular badge — static (was infinite vertical bounce, fought scroll) */
 .badge-pop {
-  animation: badgePop 4s ease-in-out infinite;
-}
-@keyframes badgePop {
-  0%, 100% { transform: translate(-50%, 0); }
-  50%      { transform: translate(-50%, -3px); }
+  /* no animation */
 }
 
 /* terminal line stagger */
