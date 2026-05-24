@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #08090A;
   /* Prevent rogue absolute children from forcing horizontal scroll on iOS */
-  overflow-x: clip;
+  overflow-x: hidden;
   max-width: 100%;
 }
 
@@ -21,11 +20,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   /* Stop horizontal overflow without breaking vertical scroll */
-  overflow-x: clip;
+  overflow-x: hidden;
   max-width: 100%;
-  /* Reduce the rubber-band scroll bounce on iOS that compounds the
-     URL-bar-collapse "page jumps up" feeling */
-  overscroll-behavior-y: none;
+}
+
+/* Smooth scroll only for programmatic/anchor navigation, not wheel/touch */
+@media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Tap target hint — removes 300ms tap delay on touch devices */
